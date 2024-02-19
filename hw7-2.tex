@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+\usepackage{tikz}
+\usepackage{xcolor,colortbl}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is FULLPAGE.STY by H.Partl, Version 2 as of 15 Dec 1988.
+% Document Style Option to fill the paper just like Plain TeX.
+
+\typeout{Style Option FULLPAGE Version 2 as of 15 Dec 1988}
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+
+\textheight 8.9in
+
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+
+\textwidth 6.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textwidth}{6.8in}
+\setlength{\textheight}{9.5in}
+
+
+\def\ind{\hspace*{0.3in}}
+\def\gap{0.1in}
+\def\bigap{0.25in}
+\newcommand{\Xomit}[1]{}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+
+\begin{document}
+
+\setlength{\parindent}{0in}
+\addtolength{\parskip}{0.1cm}
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{{\bf
+CS 4820, Spring 2019 \hfill Homework 7, Problem 2}\\
+% TODO: fill in your own name, netID, and collaborators
+Name: \\
+NetID: \\
+}}
+\end{center}
+\vspace{5mm}
+\vskip \bigap
+{\bf (2)} {\em (10 points)} 
+You are organizing a carnival for the town of Ithaca. There are various artists, arriving from all over the globe, to perform in various shows as part of the carnival. A total of $n$ artists are participating from a total of $m$ countries. Further, there are a total of $r$ shows.  The following are the constraints on organizing the carnival:
+
+\begin{enumerate}
+\item
+Artist $\ell$, subject to her skills, is only capable of participating in a subset of the shows given by a list $L_{\ell}$.
+\item
+The $i$'th show requires exactly $n_i$ artists to perform.
+\item
+Each show can have at most one artist from each country.
+\item
+So as to be fair to all artists, each artist can participate in at most $r'$ shows.
+\end{enumerate}
+As part of the input, you will receive integers $n,m,r,r',n_1,\ldots,n_r$ and the capability list $L_{1},\ldots,L_n$ of the artists.
+Your task is to design an efficient algorithm to determine if you can organize the carnival subject to the above restrictions. If indeed it is possible, you have to output the allocation of artists to shows.  
+\vskip \bigap
+
+%% Your solution goes here.
+
+
+\end{document}

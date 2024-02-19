@@ -1,0 +1,1662 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={BTRY 3020/STSCI 3200 Homework V},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{BTRY 3020/STSCI 3200 Homework V}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{NAME: Kevin Klaben}\label{name-kevin-klaben}
+
+\section{NETID: kek228}\label{netid-kek228}
+
+\section{\texorpdfstring{\textbf{DUE DATE: March 19 2019, by 8:40
+am}}{DUE DATE: March 19 2019, by 8:40 am}}\label{due-date-march-19-2019-by-840-am}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{Question 1.}\label{question-1.}
+
+The number of serious, and often fatal, infections acquired in hospitals
+has become a serious topic. A government agency tasked with studying
+characteristics of hospitals gathers data on 338 randomly selected
+hospitals across the United States. Unfortunately, over the last
+calendar year, complete data can only be gathered from 113 of these
+chosen hospitals. Data across the given year for these 113 hospitals
+appear in Hwk5Q1DatSp19.
+
+Variables included in the data set include:
+
+ID: Identification number of the hospital Len: Average length of stay of
+patients in that hospital (days) Age: Average age of patients in that
+hospital (in years) InfPerc: The percent of patients to contract a
+serious infection while staying in that hospital CultRat: Ratio of
+number of cultures performed to number of patients without symptoms of
+hospital-acquired infections, times 100 Chest: Ratio of number of
+routine chest X-Rays performed to number of patients with symptoms of
+pneumonia, times 100 NumBed: Average number of beds available over the
+study period MedSch: = 1 if the hospital has a medical school
+affiliation, = 0 if not Reg: Region of the country (1=Northeast,
+2=Northcentral, 3=South, 4=West) Cens: Average number of patients in
+hospital per day during the study period Nurs: Average number of
+full-time registered and licensed practical nurses employed during the
+study period ServPerc: The percentage of 35 potential facilities and
+services provided by the hospital
+
+The research questions: What characteristics of a hospital affect the
+percent of patients that contract a serious infection while in the
+hospital?
+
+We'll follow the various steps and build a multiple regression model to
+answer this question. (The Occupancy Example under Class Examples on
+BlackBoard may be helpful in this question with the R coding).
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\tightlist
+\item
+  Enter the data into R for analysis; be sure to designate categorical
+  variables as such (using the factor command).
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{HosDat <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"Hwk5Q1DatSp19.xlsx"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(HosDat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 12
+##      ID   Len   Age InfPerc CultRat Chest NumBed MedSch   Reg  Cens  Nurs
+##   <dbl> <dbl> <dbl>   <dbl>   <dbl> <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl>
+## 1     1  7.13  55.7     4.1     9    39.6    279      2     4   207   241
+## 2     2  8.82  58.2     1.6     3.8  51.7     80      2     2    51    52
+## 3     3  8.34  56.9     2.7     8.1  74      107      2     3    82    54
+## 4     4  8.95  53.7     5.6    18.9 123.     147      2     4    53   148
+## 5     5 11.2   56.5     5.7    34.5  88.9    180      2     1   134   151
+## 6     6  9.76  50.9     5.1    21.9  97      150      2     2   147   106
+## # ... with 1 more variable: ServPerc <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosDat}\OperatorTok{$}\NormalTok{MedSch =}\StringTok{ }\KeywordTok{factor}\NormalTok{(HosDat}\OperatorTok{$}\NormalTok{MedSch)}
+\NormalTok{HosDat}\OperatorTok{$}\NormalTok{Reg =}\StringTok{ }\KeywordTok{factor}\NormalTok{(HosDat}\OperatorTok{$}\NormalTok{Reg)}
+
+\NormalTok{Hos.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{Age}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{NumBed}\OperatorTok{+}\NormalTok{MedSch}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{Cens}\OperatorTok{+}\NormalTok{Nurs}\OperatorTok{+}\NormalTok{ServPerc, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(Hos.lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + Age + CultRat + Chest + NumBed + 
+##     MedSch + Reg + Cens + Nurs + ServPerc, data = HosDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.8362 -0.4945 -0.0606  0.5284  2.5225 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -2.513670   1.322379  -1.901 0.060199 .  
+## Len          0.242403   0.070184   3.454 0.000812 ***
+## Age          0.013231   0.021771   0.608 0.544745    
+## CultRat      0.054485   0.010550   5.165 1.23e-06 ***
+## Chest        0.011553   0.005264   2.195 0.030504 *  
+## NumBed      -0.003489   0.002677  -1.303 0.195420    
+## MedSch2      0.660823   0.321392   2.056 0.042375 *  
+## Reg2         0.425509   0.264415   1.609 0.110715    
+## Reg3         0.366762   0.272487   1.346 0.181353    
+## Reg4         1.149535   0.339173   3.389 0.001004 ** 
+## Cens         0.003865   0.003451   1.120 0.265477    
+## Nurs         0.001787   0.001695   1.055 0.294165    
+## ServPerc     0.020570   0.010059   2.045 0.043492 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9138 on 100 degrees of freedom
+## Multiple R-squared:  0.5854, Adjusted R-squared:  0.5356 
+## F-statistic: 11.76 on 12 and 100 DF,  p-value: 1.963e-14
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Run backward elimination (or forward selection) with library MASS
+  using the AIC criteria. What variables does this procedure select?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\NormalTok{null=}\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\DecValTok{1}\NormalTok{, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\NormalTok{full=}\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{Age}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{NumBed}\OperatorTok{+}\NormalTok{MedSch}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{Cens}\OperatorTok{+}\NormalTok{Nurs}\OperatorTok{+}\NormalTok{ServPerc, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{step}\NormalTok{(full, }\DataTypeTok{data=}\NormalTok{HosDat, }\DataTypeTok{direction=}\StringTok{"backward"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=-8.19
+## InfPerc ~ Len + Age + CultRat + Chest + NumBed + MedSch + Reg + 
+##     Cens + Nurs + ServPerc
+## 
+##            Df Sum of Sq     RSS     AIC
+## - Age       1    0.3084  83.809 -9.7702
+## - Nurs      1    0.9286  84.429 -8.9371
+## - Cens      1    1.0471  84.547 -8.7786
+## - NumBed    1    1.4186  84.919 -8.2831
+## <none>                   83.500 -8.1868
+## - ServPerc  1    3.4917  86.992 -5.5577
+## - MedSch    1    3.5301  87.030 -5.5078
+## - Chest     1    4.0217  87.522 -4.8713
+## - Reg       3   10.0361  93.536 -1.3613
+## - Len       1    9.9607  93.461  2.5476
+## - CultRat   1   22.2715 105.772 16.5302
+## 
+## Step:  AIC=-9.77
+## InfPerc ~ Len + CultRat + Chest + NumBed + MedSch + Reg + Cens + 
+##     Nurs + ServPerc
+## 
+##            Df Sum of Sq     RSS      AIC
+## - Cens      1    0.9196  84.728 -10.5370
+## - Nurs      1    0.9562  84.765 -10.4883
+## - NumBed    1    1.3133  85.122 -10.0133
+## <none>                   83.809  -9.7702
+## - ServPerc  1    3.5748  87.383  -7.0502
+## - MedSch    1    3.6860  87.495  -6.9065
+## - Chest     1    3.9808  87.789  -6.5264
+## - Reg       3   10.0534  93.862  -2.9685
+## - Len       1   12.2468  96.055   3.6418
+## - CultRat   1   22.7363 106.545  15.3532
+## 
+## Step:  AIC=-10.54
+## InfPerc ~ Len + CultRat + Chest + NumBed + MedSch + Reg + Nurs + 
+##     ServPerc
+## 
+##            Df Sum of Sq     RSS      AIC
+## - NumBed    1    0.4002  85.128 -12.0045
+## - Nurs      1    1.4381  86.166 -10.6352
+## <none>                   84.728 -10.5370
+## - MedSch    1    3.0146  87.743  -8.5864
+## - ServPerc  1    3.2901  88.018  -8.2322
+## - Chest     1    3.8173  88.546  -7.5574
+## - Reg       3    9.3261  94.054  -4.7372
+## - Len       1   17.0911 101.819   8.2268
+## - CultRat   1   21.8345 106.563  13.3722
+## 
+## Step:  AIC=-12
+## InfPerc ~ Len + CultRat + Chest + MedSch + Reg + Nurs + ServPerc
+## 
+##            Df Sum of Sq     RSS      AIC
+## - Nurs      1    1.2209  86.349 -12.3954
+## <none>                   85.128 -12.0045
+## - ServPerc  1    2.8922  88.021 -10.2292
+## - MedSch    1    3.3662  88.495  -9.6224
+## - Chest     1    4.1090  89.238  -8.6778
+## - Reg       3    9.2402  94.369  -6.3602
+## - Len       1   17.2692 102.398   6.8668
+## - CultRat   1   22.9244 108.053  12.9414
+## 
+## Step:  AIC=-12.4
+## InfPerc ~ Len + CultRat + Chest + MedSch + Reg + ServPerc
+## 
+##            Df Sum of Sq     RSS      AIC
+## <none>                   86.349 -12.3954
+## - MedSch    1    2.4623  88.812 -11.2182
+## - Chest     1    3.9212  90.271  -9.3770
+## - Reg       3    9.6872  96.037  -6.3804
+## - ServPerc  1   11.3028  97.652  -0.4952
+## - Len       1   18.4796 104.829   7.5186
+## - CultRat   1   23.6669 110.016  12.9762
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + MedSch + Reg + 
+##     ServPerc, data = HosDat)
+## 
+## Coefficients:
+## (Intercept)          Len      CultRat        Chest      MedSch2  
+##    -1.93937      0.27469      0.05234      0.01133      0.50274  
+##        Reg2         Reg3         Reg4     ServPerc  
+##     0.34023      0.34760      1.10697      0.02546
+\end{verbatim}
+
+This procedure selects Len, CultRat, Chest, MedSch, Reg, and ServPerc as
+the predictors for this model.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Run all subsets regression using the leaps library and the BIC
+  criteria. What variables does this procedure select?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(leaps)}
+
+\NormalTok{Model <-}\StringTok{ }\KeywordTok{regsubsets}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{Age}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{NumBed}\OperatorTok{+}\NormalTok{MedSch}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{Cens}\OperatorTok{+}\NormalTok{Nurs}\OperatorTok{+}\NormalTok{ServPerc, }\DataTypeTok{data=}\NormalTok{HosDat, }\DataTypeTok{nbest=}\DecValTok{3}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(Model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Subset selection object
+## Call: regsubsets.formula(InfPerc ~ Len + Age + CultRat + Chest + NumBed + 
+##     MedSch + Reg + Cens + Nurs + ServPerc, data = HosDat, nbest = 3)
+## 12 Variables  (and intercept)
+##          Forced in Forced out
+## Len          FALSE      FALSE
+## Age          FALSE      FALSE
+## CultRat      FALSE      FALSE
+## Chest        FALSE      FALSE
+## NumBed       FALSE      FALSE
+## MedSch2      FALSE      FALSE
+## Reg2         FALSE      FALSE
+## Reg3         FALSE      FALSE
+## Reg4         FALSE      FALSE
+## Cens         FALSE      FALSE
+## Nurs         FALSE      FALSE
+## ServPerc     FALSE      FALSE
+## 3 subsets of each size up to 8
+## Selection Algorithm: exhaustive
+##          Len Age CultRat Chest NumBed MedSch2 Reg2 Reg3 Reg4 Cens Nurs
+## 1  ( 1 ) " " " " "*"     " "   " "    " "     " "  " "  " "  " "  " " 
+## 1  ( 2 ) "*" " " " "     " "   " "    " "     " "  " "  " "  " "  " " 
+## 1  ( 3 ) " " " " " "     "*"   " "    " "     " "  " "  " "  " "  " " 
+## 2  ( 1 ) "*" " " "*"     " "   " "    " "     " "  " "  " "  " "  " " 
+## 2  ( 2 ) " " " " "*"     " "   " "    " "     " "  " "  " "  " "  " " 
+## 2  ( 3 ) " " " " "*"     " "   " "    " "     " "  " "  " "  "*"  " " 
+## 3  ( 1 ) "*" " " "*"     " "   " "    " "     " "  " "  " "  " "  " " 
+## 3  ( 2 ) "*" " " "*"     " "   " "    " "     " "  " "  "*"  " "  " " 
+## 3  ( 3 ) "*" " " "*"     " "   " "    " "     " "  " "  " "  " "  "*" 
+## 4  ( 1 ) "*" " " "*"     " "   " "    " "     " "  " "  "*"  " "  " " 
+## 4  ( 2 ) "*" " " "*"     " "   " "    " "     " "  " "  "*"  " "  "*" 
+## 4  ( 3 ) "*" " " "*"     "*"   " "    " "     " "  " "  " "  " "  " " 
+## 5  ( 1 ) "*" " " "*"     "*"   " "    " "     " "  " "  "*"  " "  " " 
+## 5  ( 2 ) "*" " " "*"     "*"   " "    " "     " "  " "  "*"  " "  "*" 
+## 5  ( 3 ) "*" " " "*"     " "   " "    "*"     " "  " "  "*"  " "  " " 
+## 6  ( 1 ) "*" " " "*"     "*"   " "    "*"     " "  " "  "*"  " "  " " 
+## 6  ( 2 ) "*" " " "*"     "*"   " "    "*"     " "  " "  "*"  " "  "*" 
+## 6  ( 3 ) "*" " " "*"     "*"   " "    " "     " "  " "  "*"  " "  "*" 
+## 7  ( 1 ) "*" " " "*"     "*"   " "    "*"     " "  " "  "*"  " "  "*" 
+## 7  ( 2 ) "*" " " "*"     "*"   " "    "*"     " "  " "  "*"  "*"  " " 
+## 7  ( 3 ) "*" " " "*"     "*"   "*"    "*"     " "  " "  "*"  " "  " " 
+## 8  ( 1 ) "*" " " "*"     "*"   " "    "*"     "*"  " "  "*"  " "  "*" 
+## 8  ( 2 ) "*" " " "*"     "*"   " "    "*"     "*"  "*"  "*"  " "  " " 
+## 8  ( 3 ) "*" " " "*"     "*"   " "    "*"     " "  "*"  "*"  " "  "*" 
+##          ServPerc
+## 1  ( 1 ) " "     
+## 1  ( 2 ) " "     
+## 1  ( 3 ) " "     
+## 2  ( 1 ) " "     
+## 2  ( 2 ) "*"     
+## 2  ( 3 ) " "     
+## 3  ( 1 ) "*"     
+## 3  ( 2 ) " "     
+## 3  ( 3 ) " "     
+## 4  ( 1 ) "*"     
+## 4  ( 2 ) " "     
+## 4  ( 3 ) "*"     
+## 5  ( 1 ) "*"     
+## 5  ( 2 ) " "     
+## 5  ( 3 ) "*"     
+## 6  ( 1 ) "*"     
+## 6  ( 2 ) " "     
+## 6  ( 3 ) "*"     
+## 7  ( 1 ) "*"     
+## 7  ( 2 ) "*"     
+## 7  ( 3 ) "*"     
+## 8  ( 1 ) "*"     
+## 8  ( 2 ) "*"     
+## 8  ( 3 ) "*"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(Model,}\DataTypeTok{scale=}\StringTok{"bic"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+The all subsets model selection selects Len, CultRat, Chest, Reg4 (which
+is part of the encoding for the Reg data overall), and ServPerc.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  We know that AIC tends to overfit models while BIC tends to underfit
+  them. Select a range of models (that differ by one predictor) that
+  runs from the model selected by BIC to the one selected by AIC. Get
+  the summaries of all these models.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosNone.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{ServPerc, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosNone.lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + ServPerc, data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.22907 -0.65305 -0.00399  0.64169  2.51097 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.063581   0.533207  -0.119 0.905305    
+## Len          0.188411   0.054714   3.444 0.000818 ***
+## CultRat      0.046446   0.009923   4.680 8.35e-06 ***
+## Chest        0.012052   0.005351   2.252 0.026316 *  
+## ServPerc     0.020465   0.006347   3.224 0.001671 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9499 on 108 degrees of freedom
+## Multiple R-squared:  0.5161, Adjusted R-squared:  0.4982 
+## F-statistic:  28.8 on 4 and 108 DF,  p-value: 2.728e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosMedSch.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{MedSch}\OperatorTok{+}\NormalTok{ServPerc, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosMedSch.lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + MedSch + ServPerc, 
+##     data = HosDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.3092 -0.6210 -0.1127  0.6402  2.4136 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.624863   0.695769  -0.898 0.371154    
+## Len          0.196111   0.054918   3.571 0.000534 ***
+## CultRat      0.048434   0.010024   4.832 4.54e-06 ***
+## Chest        0.011556   0.005352   2.159 0.033064 *  
+## MedSch2      0.374686   0.299481   1.251 0.213621    
+## ServPerc     0.024586   0.007136   3.445 0.000816 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9474 on 107 degrees of freedom
+## Multiple R-squared:  0.5231, Adjusted R-squared:  0.5008 
+## F-statistic: 23.47 on 5 and 107 DF,  p-value: 7.382e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosReg.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosReg.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + Reg + ServPerc, 
+##     data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.89739 -0.60475  0.05352  0.64507  2.40506 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -1.089797   0.678339  -1.607  0.11115    
+## Len          0.258449   0.057992   4.457 2.09e-05 ***
+## CultRat      0.049345   0.009737   5.068 1.74e-06 ***
+## Chest        0.012003   0.005245   2.288  0.02412 *  
+## Reg2         0.279098   0.251996   1.108  0.27059    
+## Reg3         0.310702   0.259516   1.197  0.23391    
+## Reg4         1.028169   0.331121   3.105  0.00245 ** 
+## ServPerc     0.020056   0.006203   3.233  0.00164 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9197 on 105 degrees of freedom
+## Multiple R-squared:  0.559,  Adjusted R-squared:  0.5296 
+## F-statistic: 19.01 on 7 and 105 DF,  p-value: 3.41e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosAll.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{MedSch}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosAll.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + MedSch + Reg + 
+##     ServPerc, data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.92025 -0.58730 -0.07426  0.65607  2.26854 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -1.939371   0.833707  -2.326 0.021947 *  
+## Len          0.274694   0.058226   4.718 7.45e-06 ***
+## CultRat      0.052336   0.009803   5.339 5.52e-07 ***
+## Chest        0.011326   0.005212   2.173 0.032035 *  
+## MedSch2      0.502745   0.291937   1.722 0.088024 .  
+## Reg2         0.340227   0.252180   1.349 0.180221    
+## Reg3         0.347599   0.258011   1.347 0.180837    
+## Reg4         1.106965   0.331240   3.342 0.001157 ** 
+## ServPerc     0.025459   0.006900   3.690 0.000359 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9112 on 104 degrees of freedom
+## Multiple R-squared:  0.5712, Adjusted R-squared:  0.5382 
+## F-statistic: 17.32 on 8 and 104 DF,  p-value: 3.842e-16
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  From the summary output of the models you ran in Part D above, select
+  a single model as best. Consider the \(R^2\) (and/or adjusted \(R^2\),
+  if you like) to select this model (How much additional variation do
+  the additional predictors explain? Are they worth including in this
+  context?)
+\end{enumerate}
+
+Comparing the first model (HosNone) to the second model (HosMedSch) we
+can see that by adding the MedSch predictor, we only add an additional
+0.7\% of the variation in Infection Percentage explained by the model.
+This is a very small portion of the explanantion and thus we will choose
+to not include MedSch as a predictor. Comparing the 1st and 3rd models
+we see that by adding Region as a predictor we increase the amount of
+variation explained by the model by an additional 4.3\% of the variation
+can be explained. In addition, Reg4 is a Signifcant factor in the model
+and in such an important any this amount of variation being explained
+should be included as a part of the model. We can't throw out and just
+keep one part of this factor Region and thus Region is slected for the
+overall model. In addition, collecting data on region requires very
+little expense as it is simply recording what area each hospital is in
+by thier address. Thus, the model that is selected is that of HosReg.lm.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Get the diagnostic plots (standardized residual, QQ, Cook's) for the
+  model you selected in Part E. Comment on the vailidity of your
+  assumptions.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqPlot}\NormalTok{(HosReg.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{verbatim}
+## [1]  8 53
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(HosReg.lm}\OperatorTok{$}\NormalTok{fitted.values, }\KeywordTok{rstandard}\NormalTok{(HosReg.lm))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(HosReg.lm, }\DataTypeTok{which =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-5-3.pdf}
+
+Observing the Standardized residual plots we can see that the
+standardized residuals look fairly spread and do not appear to be
+heteroskedastic. Looking at the qqplot we can see that there are several
+points in the lower range that fall outside the confidence bands which
+is a bit concerning. However, is appears to be approximately 5\% of the
+data which we can expect to fall outside the confidence bands hoewever,
+to be sure we must check the Cook's distance plot to see if there are
+any influential points driving our conclusions. When we look at the
+cook's distance plot we see that there are no particularly influential
+points as no points have extremely large values on the cook's distance
+plot.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  From your selected base model (model with no poynomials and no
+  interaction terms) from Part E, check for polynomial effects of your
+  numerical predictors. Do an F-test to see if all the polynomial terms
+  are nonsignificant (remember the announcement on BlackBoard on the
+  easy way to do general linear tests). Then drop the terms out that you
+  know are nonsignificant from the t-tests one at a time till all the
+  remaining terms are significant.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosDat}\OperatorTok{$}\NormalTok{LenSq=HosDat}\OperatorTok{$}\NormalTok{Len}\OperatorTok{^}\DecValTok{2}
+\NormalTok{HosDat}\OperatorTok{$}\NormalTok{CultRatSq=HosDat}\OperatorTok{$}\NormalTok{CultRat}\OperatorTok{^}\DecValTok{2}
+\NormalTok{HosDat}\OperatorTok{$}\NormalTok{ChestSq=HosDat}\OperatorTok{$}\NormalTok{Chest}\OperatorTok{^}\DecValTok{2}
+\NormalTok{HosDat}\OperatorTok{$}\NormalTok{ServPercSq=HosDat}\OperatorTok{$}\NormalTok{ServPerc}\OperatorTok{^}\DecValTok{2}
+\NormalTok{HosDat}\OperatorTok{$}\NormalTok{ServPercCub=HosDat}\OperatorTok{$}\NormalTok{ServPerc}\OperatorTok{^}\DecValTok{3}
+
+\NormalTok{HosSq.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{LenSq}\OperatorTok{+}\NormalTok{CultRatSq}\OperatorTok{+}\NormalTok{ChestSq}\OperatorTok{+}\NormalTok{ServPercSq, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + Reg + ServPerc + 
+##     LenSq + CultRatSq + ChestSq + ServPercSq, data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.92813 -0.49170 -0.03369  0.50774  2.04050 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -4.8303834  1.8543316  -2.605 0.010576 *  
+## Len          0.7900063  0.2562558   3.083 0.002643 ** 
+## CultRat      0.0942589  0.0269271   3.501 0.000693 ***
+## Chest       -0.0135850  0.0304625  -0.446 0.656583    
+## Reg2         0.4459606  0.2488807   1.792 0.076149 .  
+## Reg3         0.4544747  0.2501935   1.816 0.072261 .  
+## Reg4         1.3440402  0.3221949   4.172 6.41e-05 ***
+## ServPerc     0.0961340  0.0273167   3.519 0.000651 ***
+## LenSq       -0.0213522  0.0103767  -2.058 0.042195 *  
+## CultRatSq   -0.0009479  0.0004915  -1.929 0.056583 .  
+## ChestSq      0.0001274  0.0001829   0.696 0.487922    
+## ServPercSq  -0.0009214  0.0003035  -3.036 0.003053 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8628 on 101 degrees of freedom
+## Multiple R-squared:  0.6267, Adjusted R-squared:  0.586 
+## F-statistic: 15.41 on 11 and 101 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(HosSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: InfPerc
+##             Df Sum Sq Mean Sq F value    Pr(>F)    
+## Len          1 57.305  57.305 76.9872 4.456e-14 ***
+## CultRat      1 33.397  33.397 44.8674 1.213e-09 ***
+## Chest        1  3.857   3.857  5.1820 0.0249317 *  
+## Reg          3  9.166   3.055  4.1049 0.0085774 ** 
+## ServPerc     1  8.843   8.843 11.8796 0.0008285 ***
+## LenSq        1  2.634   2.634  3.5393 0.0628096 .  
+## CultRatSq    1  4.139   4.139  5.5601 0.0203009 *  
+## ChestSq      1  0.000   0.000  0.0004 0.9839705    
+## ServPercSq   1  6.859   6.859  9.2153 0.0030529 ** 
+## Residuals  101 75.179   0.744                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pf}\NormalTok{(}\FloatTok{4.58}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{101}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9980663
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosChestSq.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{LenSq}\OperatorTok{+}\NormalTok{CultRatSq}\OperatorTok{+}\NormalTok{ServPercSq, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosChestSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + Reg + ServPerc + 
+##     LenSq + CultRatSq + ServPercSq, data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.96010 -0.48340 -0.05732  0.54283  2.04397 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -5.5152714  1.5678670  -3.518 0.000652 ***
+## Len          0.7831244  0.2554174   3.066 0.002777 ** 
+## CultRat      0.0908053  0.0263992   3.440 0.000845 ***
+## Chest        0.0073187  0.0051212   1.429 0.156033    
+## Reg2         0.4222359  0.2459129   1.717 0.089012 .  
+## Reg3         0.4246161  0.2458664   1.727 0.087191 .  
+## Reg4         1.3424004  0.3213714   4.177 6.24e-05 ***
+## ServPerc     0.0925988  0.0267726   3.459 0.000793 ***
+## LenSq       -0.0208597  0.0103264  -2.020 0.046002 *  
+## CultRatSq   -0.0008951  0.0004844  -1.848 0.067504 .  
+## ServPercSq  -0.0008743  0.0002951  -2.962 0.003799 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8606 on 102 degrees of freedom
+## Multiple R-squared:  0.6249, Adjusted R-squared:  0.5881 
+## F-statistic: 16.99 on 10 and 102 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosRegSq.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{LenSq}\OperatorTok{+}\NormalTok{ServPercSq, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosRegSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + Reg + ServPerc + 
+##     LenSq + ServPercSq, data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.89034 -0.50170 -0.06643  0.55663  2.10165 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -5.2932403  1.5814768  -3.347 0.001141 ** 
+## Len          0.7547064  0.2579256   2.926 0.004224 ** 
+## CultRat      0.0451005  0.0093394   4.829 4.79e-06 ***
+## Chest        0.0097641  0.0050050   1.951 0.053788 .  
+## Reg2         0.3013462  0.2398150   1.257 0.211749    
+## Reg3         0.3596349  0.2461751   1.461 0.147089    
+## Reg4         1.2789735  0.3232576   3.957 0.000140 ***
+## ServPerc     0.1027038  0.0265137   3.874 0.000189 ***
+## LenSq       -0.0201046  0.0104386  -1.926 0.056863 .  
+## ServPercSq  -0.0009635  0.0002946  -3.271 0.001459 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8706 on 103 degrees of freedom
+## Multiple R-squared:  0.6123, Adjusted R-squared:  0.5785 
+## F-statistic: 18.08 on 9 and 103 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosReSq.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{ServPercSq, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosReSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + Reg + ServPerc + 
+##     ServPercSq, data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.99268 -0.48407 -0.00741  0.57734  2.25220 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -2.6744999  0.8181186  -3.269 0.001463 ** 
+## Len          0.2693703  0.0557123   4.835 4.62e-06 ***
+## CultRat      0.0478545  0.0093488   5.119 1.42e-06 ***
+## Chest        0.0100157  0.0050680   1.976 0.050773 .  
+## Reg2         0.3351036  0.2422691   1.383 0.169570    
+## Reg3         0.3618052  0.2493585   1.451 0.149805    
+## Reg4         1.1429789  0.3195342   3.577 0.000529 ***
+## ServPerc     0.1036782  0.0268520   3.861 0.000196 ***
+## ServPercSq  -0.0009527  0.0002983  -3.194 0.001860 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8819 on 104 degrees of freedom
+## Multiple R-squared:  0.5984, Adjusted R-squared:  0.5675 
+## F-statistic: 19.37 on 8 and 104 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+F-Test Ho: All polynomial factors are insignificant and coefficeints
+equal to zero. Ha: At least one polynomial factor is significant and not
+equal to zero. When an F-test is done to determine if all of the squared
+factors can be droped we get a TS=(2.634+4.139+0.000+6.859)/4/0.774=4.58
+
+P(F(4,101)\textgreater{}4.58)=1-0.998=0.002
+
+As 0.002=p-value\textless{}alpha=0.05 and thus we reject the null
+hypothesis and conclude that at least one of the polynomial factors is
+signifcant.
+
+The sequential test of dropping terms one by one finds that all squared
+terms should be dropped other than the ServPercSq term which is found to
+be significant.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Now add first order interaction terms for EVERY pair of variables
+  remaining in your model (including polynomial terms). Perform a
+  simultaneous test to see if all interactions can be dropped. Then be
+  sure to drop any that are nonsignificant from your model.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HosRegInt.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(InfPerc}\OperatorTok{~}\NormalTok{Len}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{ServPercSq}\OperatorTok{+}\NormalTok{Len}\OperatorTok{:}\NormalTok{Chest}\OperatorTok{+}\NormalTok{Len}\OperatorTok{:}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{Len}\OperatorTok{:}\NormalTok{Reg}\OperatorTok{+}\NormalTok{Len}\OperatorTok{:}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{Len}\OperatorTok{:}\NormalTok{ServPercSq}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{:}\NormalTok{Chest}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{:}\NormalTok{Reg}\OperatorTok{+}\NormalTok{ServPerc}\OperatorTok{:}\NormalTok{CultRat}\OperatorTok{+}\NormalTok{CultRat}\OperatorTok{:}\NormalTok{ServPercSq}\OperatorTok{+}\StringTok{ }\NormalTok{Chest}\OperatorTok{:}\NormalTok{Reg}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{:}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{Chest}\OperatorTok{:}\NormalTok{ServPercSq}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{:}\NormalTok{ServPerc}\OperatorTok{+}\NormalTok{Reg}\OperatorTok{:}\NormalTok{ServPercSq}\OperatorTok{+}\NormalTok{ServPerc}\OperatorTok{:}\NormalTok{ServPercSq, }\DataTypeTok{data=}\NormalTok{HosDat)}
+\KeywordTok{summary}\NormalTok{(HosRegInt.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + Reg + ServPerc + 
+##     ServPercSq + Len:Chest + Len:CultRat + Len:Reg + Len:ServPerc + 
+##     Len:ServPercSq + CultRat:Chest + CultRat:Reg + ServPerc:CultRat + 
+##     CultRat:ServPercSq + Chest:Reg + Chest:ServPerc + Chest:ServPercSq + 
+##     Reg:ServPerc + Reg:ServPercSq + ServPerc:ServPercSq, data = HosDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.0044 -0.4645 -0.0452  0.4738  2.0096 
+## 
+## Coefficients:
+##                       Estimate Std. Error t value Pr(>|t|)
+## (Intercept)          6.281e+00  8.689e+00   0.723    0.472
+## Len                 -3.009e-01  9.467e-01  -0.318    0.751
+## CultRat              2.152e-01  1.603e-01   1.343    0.183
+## Chest               -2.624e-02  6.575e-02  -0.399    0.691
+## Reg2                 7.837e-02  4.291e+00   0.018    0.985
+## Reg3                -3.431e+00  3.941e+00  -0.871    0.387
+## Reg4                 1.514e+00  5.164e+00   0.293    0.770
+## ServPerc            -3.699e-01  4.006e-01  -0.923    0.359
+## ServPercSq           3.588e-03  4.793e-03   0.749    0.456
+## Len:Chest           -2.549e-03  3.830e-03  -0.666    0.508
+## Len:CultRat          6.887e-03  9.565e-03   0.720    0.474
+## Len:Reg2             1.667e-01  2.132e-01   0.782    0.437
+## Len:Reg3             3.234e-01  2.043e-01   1.583    0.117
+## Len:Reg4            -7.640e-02  3.602e-01  -0.212    0.833
+## Len:ServPerc         2.439e-02  4.244e-02   0.575    0.567
+## Len:ServPercSq      -2.301e-04  4.447e-04  -0.517    0.606
+## CultRat:Chest       -8.354e-04  8.434e-04  -0.990    0.325
+## CultRat:Reg2        -2.022e-02  2.653e-02  -0.762    0.448
+## CultRat:Reg3        -2.144e-02  3.903e-02  -0.549    0.584
+## CultRat:Reg4        -5.915e-02  6.552e-02  -0.903    0.369
+## CultRat:ServPerc    -5.107e-03  5.893e-03  -0.867    0.389
+## CultRat:ServPercSq   3.500e-05  6.655e-05   0.526    0.600
+## Chest:Reg2          -6.896e-03  1.694e-02  -0.407    0.685
+## Chest:Reg3          -9.597e-03  1.824e-02  -0.526    0.600
+## Chest:Reg4          -1.795e-02  2.310e-02  -0.777    0.440
+## Chest:ServPerc       3.426e-03  2.340e-03   1.464    0.147
+## Chest:ServPercSq    -3.336e-05  2.511e-05  -1.328    0.188
+## Reg2:ServPerc       -1.323e-02  1.733e-01  -0.076    0.939
+## Reg3:ServPerc        7.363e-02  1.560e-01   0.472    0.638
+## Reg4:ServPerc        1.269e-01  1.802e-01   0.704    0.483
+## Reg2:ServPercSq      3.575e-06  1.887e-03   0.002    0.998
+## Reg3:ServPercSq     -6.943e-04  1.703e-03  -0.408    0.685
+## Reg4:ServPercSq     -1.539e-03  2.034e-03  -0.757    0.451
+## ServPerc:ServPercSq  3.856e-06  2.400e-05   0.161    0.873
+## 
+## Residual standard error: 0.9067 on 79 degrees of freedom
+## Multiple R-squared:  0.6775, Adjusted R-squared:  0.5427 
+## F-statistic: 5.028 on 33 and 79 DF,  p-value: 2.149e-09
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(HosRegInt.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: InfPerc
+##                     Df Sum Sq Mean Sq F value    Pr(>F)    
+## Len                  1 57.305  57.305 69.6993 1.822e-12 ***
+## CultRat              1 33.397  33.397 40.6201 1.147e-08 ***
+## Chest                1  3.857   3.857  4.6915  0.033328 *  
+## Reg                  3  9.166   3.055  3.7163  0.014801 *  
+## ServPerc             1  8.843   8.843 10.7550  0.001548 ** 
+## ServPercSq           1  7.931   7.931  9.6468  0.002634 ** 
+## Len:Chest            1  0.434   0.434  0.5275  0.469824    
+## Len:CultRat          1  0.021   0.021  0.0259  0.872670    
+## Len:Reg              3  3.538   1.179  1.4345  0.239001    
+## Len:ServPerc         1  0.030   0.030  0.0364  0.849191    
+## Len:ServPercSq       1  0.157   0.157  0.1915  0.662896    
+## CultRat:Chest        1  1.036   1.036  1.2598  0.265091    
+## CultRat:Reg          3  3.021   1.007  1.2246  0.306333    
+## CultRat:ServPerc     1  3.222   3.222  3.9190  0.051227 .  
+## CultRat:ServPercSq   1  0.007   0.007  0.0086  0.926437    
+## Chest:Reg            3  0.356   0.119  0.1444  0.932983    
+## Chest:ServPerc       1  0.655   0.655  0.7969  0.374737    
+## Chest:ServPercSq     1  0.481   0.481  0.5849  0.446672    
+## Reg:ServPerc         3  1.951   0.650  0.7911  0.502424    
+## Reg:ServPercSq       3  0.998   0.333  0.4045  0.750160    
+## ServPerc:ServPercSq  1  0.021   0.021  0.0258  0.872772    
+## Residuals           79 64.952   0.822                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Perfomring a Simultaneous test to see if all the interaction terms can
+be dropped we get
+
+Ho: All polynomial factors are insignificant and coefficeints equal to
+zero. Ha: At least one polynomial factor is significant and not equal to
+zero.
+
+TS=
+(0.329+0.015+0.145+0.005+0.149+0.589+0.144+4.826+0.000+0.482+0.104+0.026+0.000+1.213+0.049)/15/0.831=0.6479
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pf}\NormalTok{(}\FloatTok{0.6479}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{91}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8273336
+\end{verbatim}
+
+As the p-value=0.827\textgreater{}alpha=0.05 we fail to reject the null
+hypothesis and thus we can drop them all of the interaction terms as
+they are insignifcant.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Report the estimated regression equation for your final model.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(HosReSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = InfPerc ~ Len + CultRat + Chest + Reg + ServPerc + 
+##     ServPercSq, data = HosDat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.99268 -0.48407 -0.00741  0.57734  2.25220 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -2.6744999  0.8181186  -3.269 0.001463 ** 
+## Len          0.2693703  0.0557123   4.835 4.62e-06 ***
+## CultRat      0.0478545  0.0093488   5.119 1.42e-06 ***
+## Chest        0.0100157  0.0050680   1.976 0.050773 .  
+## Reg2         0.3351036  0.2422691   1.383 0.169570    
+## Reg3         0.3618052  0.2493585   1.451 0.149805    
+## Reg4         1.1429789  0.3195342   3.577 0.000529 ***
+## ServPerc     0.1036782  0.0268520   3.861 0.000196 ***
+## ServPercSq  -0.0009527  0.0002983  -3.194 0.001860 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8819 on 104 degrees of freedom
+## Multiple R-squared:  0.5984, Adjusted R-squared:  0.5675 
+## F-statistic: 19.37 on 8 and 104 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Thus, the overall final estamated regression equation is
+
+InfPerc(hat)=-2.67+0.27(Len)+0.049(CultRat)+0.010(Chest)+0.34(Reg2)+0.36(Reg3)+1.14(Reg4)+0.104(ServPerc)-0.00095(ServPerc)\^{}2
+
+\section{Question 2.}\label{question-2.}
+
+Neighborhood Watch programs have been trying to predict increases in
+crime rates. They take a data-based approach to evaluating factors which
+influence neighborhood crime rates, to both predict changes in crime
+rates as well as evaluate factors affecting them. They get data from
+citizens in Neighborhood Watch programs across the nation that have this
+data available. The data appears in Hwk5Q2DatSp19.xlsx., and contains
+the following variables:
+
+Pop: Neighborhood Population Size (1000s) ChgPop: The percent change in
+neighborhood population size in the previous three years PerU18: The
+percent of the population under the age of 18; PerFree: The percent of
+public school children eligible for free school lunches ChgInc: The
+percent change in median income in the last three years CrmRate: The
+crime rate in the single year from three years ago (crimes per 1000
+individuals) PerChgCR: The percent change in crime rate over the
+previous three years
+
+A member of this organization lives in a neighborhood in Denver
+Colorado, which was not one of the neighborhoods in the data set. In his
+neighborhood the variables measured were Pop = 8.7, ChgPop = 6.8, PerU18
+= 29.2 PerFree = 55.5 ChgInc = 22.1 CrmRate = 112.9 PerChgCR = -9.1. Can
+this man expect the crime rate in his neighborhood to have decreased by
+more than 10\% in the last three years?
+
+To answer this question, use the appropriate statistical inference
+according to the following steps:
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\tightlist
+\item
+  Develop a multiple regression model predicting the percent increase
+  over a three year period based on the other variables. SHOW EVERY STEP
+  IN YOUR DEVELOPMENT OF THIS MODEL, along with a brief comment section
+  in your R code explaining what you are doing as you go along. Your
+  answer should look like, a comment on what you are doing and why,
+  followed by the R code and output that does it. Based on this, more
+  commentary explaining what you are doing next and why, the R code and
+  output thaty does this, etc.
+\end{enumerate}
+
+Initially we will take a look at the multiple regression including all
+factors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{CrimeDat <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"Hwk5Q2DatSp19.xlsx"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(CrimeDat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 7
+##     Pop ChgPop PerU18 PerFree ChgInc CrmRate PerChgCR
+##   <dbl>  <dbl>  <dbl>   <dbl>  <dbl>   <dbl>    <dbl>
+## 1   6.9    1.8   30.2    58.3   27.3    84.9    -14.2
+## 2   8.4   28.5   38.8    87.5   39.8   173.     -34.1
+## 3   5.7    7.8   31.7    83.5   26     154.     -15.8
+## 4   7.4    2.3   24.2    14.2   29.4    35.2    -13.9
+## 5   8.5   -0.7   28.1    46.7   26.6    69.2    -13.9
+## 6  13.8    7.2   10.4    57.9   26.2   111      -22.6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Crime.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(PerChgCR}\OperatorTok{~}\NormalTok{Pop}\OperatorTok{+}\NormalTok{ChgPop}\OperatorTok{+}\NormalTok{PerU18}\OperatorTok{+}\NormalTok{PerFree}\OperatorTok{+}\NormalTok{ChgInc}\OperatorTok{+}\NormalTok{CrmRate, }\DataTypeTok{data=}\NormalTok{CrimeDat)}
+\KeywordTok{summary}\NormalTok{(Crime.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PerChgCR ~ Pop + ChgPop + PerU18 + PerFree + ChgInc + 
+##     CrmRate, data = CrimeDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -24.750 -10.349   1.178   8.734  25.105 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -16.96939   12.62151  -1.344 0.186978    
+## Pop          -1.09377    0.67289  -1.625 0.112549    
+## ChgPop        0.20602    0.20828   0.989 0.329019    
+## PerU18        1.41105    0.36295   3.888 0.000405 ***
+## PerFree      -0.46309    0.13239  -3.498 0.001238 ** 
+## ChgInc       -0.30621    0.39032  -0.784 0.437741    
+## CrmRate       0.02735    0.03522   0.776 0.442398    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 14.29 on 37 degrees of freedom
+## Multiple R-squared:  0.4564, Adjusted R-squared:  0.3682 
+## F-statistic: 5.176 on 6 and 37 DF,  p-value: 0.0005964
+\end{verbatim}
+
+Next, we will perform backward elimination using AIC criteria to
+determine our most over fitted model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\NormalTok{null=}\KeywordTok{lm}\NormalTok{(PerChgCR}\OperatorTok{~}\DecValTok{1}\NormalTok{, }\DataTypeTok{data=}\NormalTok{CrimeDat)}
+\NormalTok{full=}\KeywordTok{lm}\NormalTok{(PerChgCR}\OperatorTok{~}\NormalTok{Pop}\OperatorTok{+}\NormalTok{ChgPop}\OperatorTok{+}\NormalTok{PerU18}\OperatorTok{+}\NormalTok{PerFree}\OperatorTok{+}\NormalTok{ChgInc}\OperatorTok{+}\NormalTok{CrmRate, }\DataTypeTok{data=}\NormalTok{CrimeDat)}
+\KeywordTok{step}\NormalTok{(full, }\DataTypeTok{data=}\NormalTok{CrimeDat, }\DataTypeTok{direction=}\StringTok{"backward"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=240.44
+## PerChgCR ~ Pop + ChgPop + PerU18 + PerFree + ChgInc + CrmRate
+## 
+##           Df Sum of Sq     RSS    AIC
+## - CrmRate  1    123.20  7683.5 239.16
+## - ChgInc   1    125.75  7686.0 239.17
+## - ChgPop   1    199.92  7760.2 239.59
+## <none>                  7560.3 240.44
+## - Pop      1    539.88  8100.1 241.48
+## - PerFree  1   2500.04 10060.3 251.01
+## - PerU18   1   3088.38 10648.6 253.52
+## 
+## Step:  AIC=239.16
+## PerChgCR ~ Pop + ChgPop + PerU18 + PerFree + ChgInc
+## 
+##           Df Sum of Sq     RSS    AIC
+## - ChgInc   1      54.1  7737.5 237.47
+## - ChgPop   1     295.2  7978.6 238.81
+## <none>                  7683.5 239.16
+## - Pop      1     792.5  8476.0 241.47
+## - PerFree  1    3462.7 11146.1 253.53
+## - PerU18   1    3842.9 11526.4 255.00
+## 
+## Step:  AIC=237.46
+## PerChgCR ~ Pop + ChgPop + PerU18 + PerFree
+## 
+##           Df Sum of Sq     RSS    AIC
+## - ChgPop   1     241.1  7978.6 236.81
+## <none>                  7737.5 237.47
+## - Pop      1     799.1  8536.6 239.79
+## - PerFree  1    3543.7 11281.3 252.06
+## - PerU18   1    4000.9 11738.4 253.80
+## 
+## Step:  AIC=236.81
+## PerChgCR ~ Pop + PerU18 + PerFree
+## 
+##           Df Sum of Sq     RSS    AIC
+## <none>                  7978.6 236.81
+## - Pop      1    1027.0  9005.7 240.14
+## - PerFree  1    3705.2 11683.8 251.60
+## - PerU18   1    4396.9 12375.6 254.13
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PerChgCR ~ Pop + PerU18 + PerFree, data = CrimeDat)
+## 
+## Coefficients:
+## (Intercept)          Pop       PerU18      PerFree  
+##    -18.5239      -1.4026       1.2994      -0.4029
+\end{verbatim}
+
+We find that the most overfitted model includes juts three predictors,
+Pop, PerU18, and PerFree.
+
+Next, to find the best least fitted model we perform best subsets with
+BIC criteria.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(leaps)}
+
+\NormalTok{Model <-}\StringTok{ }\KeywordTok{regsubsets}\NormalTok{(PerChgCR}\OperatorTok{~}\NormalTok{Pop}\OperatorTok{+}\NormalTok{ChgPop}\OperatorTok{+}\NormalTok{PerU18}\OperatorTok{+}\NormalTok{PerFree}\OperatorTok{+}\NormalTok{ChgInc}\OperatorTok{+}\NormalTok{CrmRate, }\DataTypeTok{data=}\NormalTok{CrimeDat, }\DataTypeTok{nbest=}\DecValTok{3}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(Model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Subset selection object
+## Call: regsubsets.formula(PerChgCR ~ Pop + ChgPop + PerU18 + PerFree + 
+##     ChgInc + CrmRate, data = CrimeDat, nbest = 3)
+## 6 Variables  (and intercept)
+##         Forced in Forced out
+## Pop         FALSE      FALSE
+## ChgPop      FALSE      FALSE
+## PerU18      FALSE      FALSE
+## PerFree     FALSE      FALSE
+## ChgInc      FALSE      FALSE
+## CrmRate     FALSE      FALSE
+## 3 subsets of each size up to 6
+## Selection Algorithm: exhaustive
+##          Pop ChgPop PerU18 PerFree ChgInc CrmRate
+## 1  ( 1 ) " " " "    "*"    " "     " "    " "    
+## 1  ( 2 ) " " " "    " "    "*"     " "    " "    
+## 1  ( 3 ) " " " "    " "    " "     " "    "*"    
+## 2  ( 1 ) " " " "    "*"    "*"     " "    " "    
+## 2  ( 2 ) " " "*"    " "    " "     " "    "*"    
+## 2  ( 3 ) "*" " "    "*"    " "     " "    " "    
+## 3  ( 1 ) "*" " "    "*"    "*"     " "    " "    
+## 3  ( 2 ) " " " "    "*"    "*"     " "    "*"    
+## 3  ( 3 ) " " "*"    "*"    "*"     " "    " "    
+## 4  ( 1 ) "*" "*"    "*"    "*"     " "    " "    
+## 4  ( 2 ) "*" " "    "*"    "*"     " "    "*"    
+## 4  ( 3 ) "*" " "    "*"    "*"     "*"    " "    
+## 5  ( 1 ) "*" "*"    "*"    "*"     "*"    " "    
+## 5  ( 2 ) "*" "*"    "*"    "*"     " "    "*"    
+## 5  ( 3 ) "*" " "    "*"    "*"     "*"    "*"    
+## 6  ( 1 ) "*" "*"    "*"    "*"     "*"    "*"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(Model,}\DataTypeTok{scale=}\StringTok{"bic"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+We find that the best least fitted model also is based on 3 predictors
+whcih are Pop, PerU18, and PerFree. Thus, as the Backward elimination
+using AIC and the best subsets using BIC select the same model we will
+mode forward using these three predictors.
+
+A summary of our new model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CrimeReduced.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(PerChgCR}\OperatorTok{~}\NormalTok{Pop}\OperatorTok{+}\NormalTok{PerU18}\OperatorTok{+}\NormalTok{PerFree, }\DataTypeTok{data=}\NormalTok{CrimeDat)}
+\KeywordTok{summary}\NormalTok{(CrimeReduced.lm) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PerChgCR ~ Pop + PerU18 + PerFree, data = CrimeDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -22.253 -10.999   1.384   7.554  25.580 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -18.52390    7.89500  -2.346 0.024004 *  
+## Pop          -1.40265    0.61814  -2.269 0.028725 *  
+## PerU18        1.29944    0.27677   4.695 3.11e-05 ***
+## PerFree      -0.40287    0.09347  -4.310 0.000103 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 14.12 on 40 degrees of freedom
+## Multiple R-squared:  0.4263, Adjusted R-squared:  0.3832 
+## F-statistic: 9.906 on 3 and 40 DF,  p-value: 5.168e-05
+\end{verbatim}
+
+We will take a look at our diagnostic plots to be sure that there are no
+significant issues with this model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\KeywordTok{qqPlot}\NormalTok{(CrimeReduced.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{verbatim}
+## [1]  6 22
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(CrimeReduced.lm}\OperatorTok{$}\NormalTok{fitted.values, }\KeywordTok{rstandard}\NormalTok{(CrimeReduced.lm))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(CrimeReduced.lm, }\DataTypeTok{which =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk5FinDrtSp19_files/figure-latex/unnamed-chunk-14-3.pdf}
+
+Observing the QQplot we can see that only a few points fall outside the
+confidence bands. This ok as we expect 5\% of points to fall outside of
+these bands and thus this appears to be ok. Next, observing the
+standardized residuals plot we can see that it is homoskedastic.
+However, there are a couple points that have fairly high residual values
+and thus, we should check the Cook's Distance plot to be sure these
+points are not overly influential. Observing the Cook's Distance plot we
+can see that there are not influential points as no points have large
+values for cook's distance.
+
+Next, We will add polynomial terms for each factor and test to see of
+they are significant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CrimeDat}\OperatorTok{$}\NormalTok{PopSq=CrimeDat}\OperatorTok{$}\NormalTok{Pop}\OperatorTok{^}\DecValTok{2}
+\NormalTok{CrimeDat}\OperatorTok{$}\NormalTok{PerU18Sq=CrimeDat}\OperatorTok{$}\NormalTok{PerU18}\OperatorTok{^}\DecValTok{2}
+\NormalTok{CrimeDat}\OperatorTok{$}\NormalTok{PerFreeSq=CrimeDat}\OperatorTok{$}\NormalTok{PerFree}\OperatorTok{^}\DecValTok{2}
+
+\NormalTok{CrimeSq.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(PerChgCR}\OperatorTok{~}\NormalTok{Pop}\OperatorTok{+}\NormalTok{PerU18}\OperatorTok{+}\NormalTok{PerFree}\OperatorTok{+}\NormalTok{PopSq}\OperatorTok{+}\NormalTok{PerU18Sq}\OperatorTok{+}\NormalTok{PerFreeSq, }\DataTypeTok{data=}\NormalTok{CrimeDat)}
+\KeywordTok{summary}\NormalTok{(CrimeSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PerChgCR ~ Pop + PerU18 + PerFree + PopSq + PerU18Sq + 
+##     PerFreeSq, data = CrimeDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -22.223 -11.150   1.656   6.912  24.390 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)  1.828078  20.130529   0.091   0.9281  
+## Pop         -4.149932   2.186101  -1.898   0.0655 .
+## PerU18       0.768654   1.657249   0.464   0.6455  
+## PerFree     -0.667810   0.398127  -1.677   0.1019  
+## PopSq        0.164712   0.126336   1.304   0.2004  
+## PerU18Sq     0.010407   0.033622   0.310   0.7587  
+## PerFreeSq    0.002532   0.004316   0.587   0.5610  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 14.14 on 37 degrees of freedom
+## Multiple R-squared:  0.4679, Adjusted R-squared:  0.3816 
+## F-statistic: 5.422 on 6 and 37 DF,  p-value: 0.0004197
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(CrimeSq.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: PerChgCR
+##           Df Sum Sq Mean Sq F value   Pr(>F)    
+## Pop        1  342.8   342.8  1.7141 0.198524    
+## PerU18     1 1879.9  1879.9  9.3992 0.004041 ** 
+## PerFree    1 3705.2  3705.2 18.5252 0.000118 ***
+## PopSq      1  457.0   457.0  2.2847 0.139151    
+## PerU18Sq   1   52.5    52.5  0.2627 0.611310    
+## PerFreeSq  1   68.8    68.8  0.3441 0.561026    
+## Residuals 37 7400.3   200.0                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Ding an F-test we can see Ho: All polynomial factors are insignificant
+and coefficeints equal to zero. Ha: At least one polynomial factor is
+significant and not equal to zero.
+
+TS= (457.0+52.5+68.8)/3/200.0=0.9638
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pf}\NormalTok{(}\FloatTok{0.9638}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{37}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4200623
+\end{verbatim}
+
+As, the p-value=0.42\textgreater{}Alpha=0.05, we fail to reject the null
+hypothesis and thus, all the polynomial predictors can be dropped as
+they cannot be determined to be significant.
+
+Next, we must check to see if the interaction terms are significant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{CrimeInt.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(PerChgCR}\OperatorTok{~}\NormalTok{Pop}\OperatorTok{+}\NormalTok{PerU18}\OperatorTok{+}\NormalTok{PerFree}\OperatorTok{+}\NormalTok{Pop}\OperatorTok{:}\NormalTok{PerU18}\OperatorTok{+}\NormalTok{Pop}\OperatorTok{:}\NormalTok{PerFree}\OperatorTok{+}\NormalTok{PerU18}\OperatorTok{:}\NormalTok{PerFree, }\DataTypeTok{data=}\NormalTok{CrimeDat)}
+\KeywordTok{summary}\NormalTok{(CrimeInt.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PerChgCR ~ Pop + PerU18 + PerFree + Pop:PerU18 + 
+##     Pop:PerFree + PerU18:PerFree, data = CrimeDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -23.674  -8.923   1.272  10.240  24.391 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(>|t|)   
+## (Intercept)    -40.68827   23.63731  -1.721  0.09354 . 
+## Pop             -1.95641    1.99012  -0.983  0.33196   
+## PerU18           2.74109    0.87994   3.115  0.00354 **
+## PerFree         -0.19793    0.35820  -0.553  0.58388   
+## Pop:PerU18      -0.06562    0.05808  -1.130  0.26584   
+## Pop:PerFree      0.04550    0.03126   1.456  0.15393   
+## PerU18:PerFree  -0.01813    0.01149  -1.578  0.12319   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 13.89 on 37 degrees of freedom
+## Multiple R-squared:  0.4864, Adjusted R-squared:  0.4031 
+## F-statistic: 5.839 on 6 and 37 DF,  p-value: 0.0002336
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(CrimeInt.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: PerChgCR
+##                Df Sum Sq Mean Sq F value    Pr(>F)    
+## Pop             1  342.8   342.8  1.7759  0.190800    
+## PerU18          1 1879.9  1879.9  9.7381  0.003492 ** 
+## PerFree         1 3705.2  3705.2 19.1931 9.362e-05 ***
+## Pop:PerU18      1   37.1    37.1  0.1922  0.663632    
+## Pop:PerFree     1  318.3   318.3  1.6491  0.207070    
+## PerU18:PerFree  1  480.4   480.4  2.4885  0.123191    
+## Residuals      37 7142.8   193.0                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Ding an F-test we can see Ho: All interaction factors are insignificant
+and coefficeints equal to zero. Ha: At least one interaction factor is
+significant and not equal to zero.
+
+TS= (37.1+318.3+480.4)/3/193.0=1.444
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pf}\NormalTok{(}\FloatTok{1.444}\NormalTok{, }\DecValTok{3}\NormalTok{ , }\DecValTok{37}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.24563
+\end{verbatim}
+
+As the P-value=0.2456\textgreater{}0.05=Alpha and thus we fail to reject
+the null hypothesis and we will drop all interaction terms as we have no
+evidence to suggest that they are significant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(CrimeReduced.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = PerChgCR ~ Pop + PerU18 + PerFree, data = CrimeDat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -22.253 -10.999   1.384   7.554  25.580 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -18.52390    7.89500  -2.346 0.024004 *  
+## Pop          -1.40265    0.61814  -2.269 0.028725 *  
+## PerU18        1.29944    0.27677   4.695 3.11e-05 ***
+## PerFree      -0.40287    0.09347  -4.310 0.000103 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 14.12 on 40 degrees of freedom
+## Multiple R-squared:  0.4263, Adjusted R-squared:  0.3832 
+## F-statistic: 9.906 on 3 and 40 DF,  p-value: 5.168e-05
+\end{verbatim}
+
+Overall, the final model is
+PerChgCR(hat)=-18.5239-1.4027(Pop)+1.2994(PerU18)-0.4029(PerFree)
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  At the end of Part A above, once you have your regression model, use
+  the model you developed to draw a conclusion answering the question.
+  Included in this conclusion should be a brief explanation about
+  subjective inference, if it is used in this study and if so, is it
+  valid?
+\end{enumerate}
+
+Ho: The predicted value is greater than or equal to -10 Ha: the
+predicted value is is \textless{}-10
+
+Pop = 8.7, ChgPop = 6.8, PerU18 = 29.2 PerFree = 55.5 ChgInc = 22.1
+CrmRate = 112.9 PerChgCR = -9.1
+
+PerChgCR(hat)=-18.52390-1.40265(Pop)+1.29944(PerU18)-0.40287(PerFree)
+PerChgCR(hat)=-18.52390-1.40265(8.7)+1.29944(29.2)-0.40287(55.5)=-15.14376
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{newdata <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Pop=}\FloatTok{8.7}\NormalTok{,}\DataTypeTok{PerU18=}\FloatTok{29.2}\NormalTok{,}\DataTypeTok{PerFree=}\FloatTok{55.5}\NormalTok{)}
+\KeywordTok{predict}\NormalTok{(CrimeReduced.lm, newdata, }\DataTypeTok{se.fit=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{interval=}\StringTok{"prediction"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $fit
+##         fit       lwr      upr
+## 1 -15.14261 -44.09156 13.80635
+## 
+## $se.fit
+## [1] 2.387136
+## 
+## $df
+## [1] 40
+## 
+## $residual.scale
+## [1] 14.12322
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qt}\NormalTok{(}\FloatTok{0.05}\NormalTok{, }\DecValTok{40}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.683851
+\end{verbatim}
+
+TS= (-15.14376-(-10))/14.12=0.3643 P(t40, 0.025\textgreater{}0.3643)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pt}\NormalTok{(}\FloatTok{0.3643}\NormalTok{, }\DataTypeTok{df=}\DecValTok{40}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3587764
+\end{verbatim}
+
+As p-value=0.3587764\textgreater{}0.05=alpha and thus we fail to reject
+the null hypothesis and cannot conclude that this man can expect his
+crime rate to have decreased by more than 10\% over the last ten years.
+As the Sample population (Neighborhoods with neighborhood watch programs
+with data available) is not equal to the population of interest
+(Neighborhoods with neighborhood watch programs) and thus, the we must
+use Subjective inference. There is no reason to believe that the
+conclusions drawn based off this data cannot be extended to this man's
+colorado neighborhood and thus our subjective inference is valid and we
+can make predictions about this man's neighborhood.
+
+
+\end{document}

@@ -1,0 +1,1821 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={BTRY 3020/StSCI 3200 Homework VI},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{BTRY 3020/StSCI 3200 Homework VI}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+\section{NAME: Kevin Klaben}\label{name-kevin-klaben}
+
+\section{NETID: kek228}\label{netid-kek228}
+
+\subsection{\texorpdfstring{\#\textbf{DUE DATE: 8:40 am Tuesday March 26
+2019}}{\#DUE DATE: 8:40 am Tuesday March 26 2019}}\label{due-date-840-am-tuesday-march-26-2019}
+
+\section{Question 1.}\label{question-1.}
+
+Health officials wonder why some people get the flu shot while others
+don't. In a study designed to shed some light on this, researchers asked
+a random sample of patients if they had gotten aflu shot, recorded their
+age and gender, and also gave each a written questionnaire designed to
+evaluate their health awareness index (Ind). Data appear in
+Hwk6Q1DatSp19. Note here that Y = 1 means they received the flu shot and
+that males were coded as \(X_3\) = 1, females coded as \(X_3\) = 0.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\tightlist
+\item
+  Obtain the maximum likelihood estimators of \(\beta_o\), \(\beta_1\),
+  \(\beta_2\), and \(\beta_3\). State the fitted regression function.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{HealthDat <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"Hwk6Q1DatSp19.xlsx"}\NormalTok{)}
+\NormalTok{HealthDat}\OperatorTok{$}\NormalTok{Gen=}\KeywordTok{factor}\NormalTok{(HealthDat}\OperatorTok{$}\NormalTok{Gen)}
+\NormalTok{HealthDat}\OperatorTok{$}\NormalTok{FShot=}\KeywordTok{factor}\NormalTok{(HealthDat}\OperatorTok{$}\NormalTok{FShot)}
+
+\NormalTok{flu.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind}\OperatorTok{+}\NormalTok{Gen,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+
+\KeywordTok{summary}\NormalTok{(flu.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind + Gen, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4037  -0.5637  -0.3352  -0.1542   2.9394  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.17716    2.98242  -0.395  0.69307   
+## Age          0.07279    0.03038   2.396  0.01658 * 
+## Ind         -0.09899    0.03348  -2.957  0.00311 **
+## Gen1         0.43397    0.52179   0.832  0.40558   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.09  on 155  degrees of freedom
+## AIC: 113.09
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(flu.glm, }\DataTypeTok{which=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk6FinDrtSp19_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\(\beta_o\) = -1.77 \(\beta_1\) = 0.0728 \(\beta_2\) = -0.099
+\(\beta_3\) = 0.434 The fitted regression is: log(odds of having gotten
+flu shot)= -1.77+0.0728(Age)-0.099(Ind)+0.434(Gen)
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  What is the estimated probability (point estimate) of getting the flu
+  shot that a male clients aged 55 years with a health awareness score
+  of 60?
+\end{enumerate}
+
+Age=55 Ind=60 Gen=1 pt-est of log(odds of gotten flu
+shot)=-1.77+0.0728(55)-0.099(60)+0.434(1)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{-}\FloatTok{1.77}\OperatorTok{+}\FloatTok{0.0728}\OperatorTok{*}\NormalTok{(}\DecValTok{55}\NormalTok{)}\OperatorTok{-}\FloatTok{0.099}\OperatorTok{*}\NormalTok{(}\DecValTok{60}\NormalTok{)}\OperatorTok{+}\FloatTok{0.434}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3.272
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exp}\NormalTok{(}\OperatorTok{-}\FloatTok{3.272}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03793049
+\end{verbatim}
+
+Thus, the pt. estimate for the odds of a 55 year old male with a health
+awareness score is predicted to be on average 0.0379.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Obtain the VIFs for the regression predictors. What conclusions can
+  you reach from these statistics?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{vif}\NormalTok{(flu.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Age      Ind      Gen 
+## 1.091111 1.081049 1.048432
+\end{verbatim}
+
+The VIFs are all less than 4 and thus, we can conclude that
+interpretting the coefficients of the parameters is valid and out
+estimates will be valid.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Get the standardized deviance residuals and plot against observation
+  number. Are there any outliers?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res <-}\StringTok{ }\KeywordTok{residuals}\NormalTok{(flu.glm, }\DataTypeTok{type =} \StringTok{"deviance"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(HealthDat}\OperatorTok{$}\NormalTok{ObsNum, res,}\DataTypeTok{xlab=}\StringTok{"Observation Number"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Deviance Residuals"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk6FinDrtSp19_files/figure-latex/unnamed-chunk-4-1.pdf}
+Yes, there is one point which sticks out and have large deviance
+residual, particularly the one observation that appears to have
+observation number just under 50 has a deviance residual much higher
+than the rest.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Get the Cook's distance numbers and plot against observation number.
+  Do there appear to be any influential outliers? If so, check their
+  effects.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(flu.glm, }\DataTypeTok{which=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk6FinDrtSp19_files/figure-latex/unnamed-chunk-5-1.pdf}
+It appears that observation 47 is more influenctial than most other
+points.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(flu.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind + Gen, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4037  -0.5637  -0.3352  -0.1542   2.9394  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.17716    2.98242  -0.395  0.69307   
+## Age          0.07279    0.03038   2.396  0.01658 * 
+## Ind         -0.09899    0.03348  -2.957  0.00311 **
+## Gen1         0.43397    0.52179   0.832  0.40558   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.09  on 155  degrees of freedom
+## AIC: 113.09
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HealthDat2=HealthDat[}\OperatorTok{-}\DecValTok{31}\NormalTok{,]}
+\NormalTok{flu2.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind}\OperatorTok{+}\NormalTok{Gen,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat2)}
+\KeywordTok{summary}\NormalTok{(flu2.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind + Gen, family = binomial, data = HealthDat2)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4018  -0.5651  -0.3358  -0.1543   2.9341  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.19603    2.97836  -0.402   0.6880   
+## Age          0.07257    0.03034   2.392   0.0168 * 
+## Ind         -0.09835    0.03347  -2.938   0.0033 **
+## Gen1         0.43984    0.52140   0.844   0.3989   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.61  on 157  degrees of freedom
+## Residual deviance: 104.97  on 154  degrees of freedom
+## AIC: 112.97
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+The dropping of this outlier has little affect on the significance of
+the predictors and little affect on the values of the coefficients.
+Thus, we will continue with it in our model.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Can we drop Age and Gender if we keep the health awareness index in
+  the model? State hypotheses, test statistic, p-value, and conclusions.
+\end{enumerate}
+
+Ho: \(\beta_1\)=\(\beta_3\)=0 Ha: Not Ho
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(flu.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind + Gen, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4037  -0.5637  -0.3352  -0.1542   2.9394  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.17716    2.98242  -0.395  0.69307   
+## Age          0.07279    0.03038   2.396  0.01658 * 
+## Ind         -0.09899    0.03348  -2.957  0.00311 **
+## Gen1         0.43397    0.52179   0.832  0.40558   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.09  on 155  degrees of freedom
+## AIC: 113.09
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flured.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Ind,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{summary}\NormalTok{(flured.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Ind, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.3944  -0.5926  -0.3999  -0.2369   2.8476  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  4.91133    1.62651    3.02  0.00253 ** 
+## Ind         -0.11931    0.03013   -3.96  7.5e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 113.20  on 157  degrees of freedom
+## AIC: 117.2
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+Ho:β1=β3=0 Ha:Not Ho Dev(flured.glm)-Dev(flu.glm)=113.20-105.09=8.11
+p=P(\(X^2_2\)\textgreater{}8.11)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pchisq}\NormalTok{(}\FloatTok{8.11}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.01733548
+\end{verbatim}
+
+As p=0.017335\textless{}Alpha=0.05, we reject the null hypothesis and
+conclude that at least one of the Gen or Age terms is signifcant and
+thus they cannot both be dropped.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Install the package ``bestglm''. Visit the following website:
+\end{enumerate}
+
+\url{https://cran.r-project.org/web/packages/bestglm/vignettes/bestglm.pdf}
+
+to learn how to use this package. Don't forget the ``library(bestglm)''
+command before you use it. (The unusual thing about bestglm is the
+creation of an ``XY'' matrix before you use it. This is a matrix where
+the first columns are your candidate predictors (X's) and the last is
+your response (Y). This amounts to a reordering of the columns in your
+dataset, with the Y last, and omitting any columns you don't want to use
+as predictors (like ``Observation Number''.) Then give the command ``XY
+= data.frame(XY)'' before running bestglm).
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\tightlist
+\item
+  Find the best model for getting a flu shot according to the BIC
+  criteria
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(bestglm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: leaps
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HealthDatXY <-}\StringTok{ }\NormalTok{HealthDat[}\KeywordTok{c}\NormalTok{(}\StringTok{"Age"}\NormalTok{, }\StringTok{"Ind"}\NormalTok{, }\StringTok{"Gen"}\NormalTok{, }\StringTok{"FShot"}\NormalTok{)]}
+\NormalTok{XY=}\KeywordTok{data.frame}\NormalTok{(HealthDatXY)}
+\NormalTok{XY}\OperatorTok{$}\NormalTok{Gen=}\KeywordTok{factor}\NormalTok{(XY}\OperatorTok{$}\NormalTok{Gen)}
+\NormalTok{XY}\OperatorTok{$}\NormalTok{FShot=}\KeywordTok{factor}\NormalTok{(XY}\OperatorTok{$}\NormalTok{FShot)}
+\NormalTok{best.glm=}\KeywordTok{bestglm}\NormalTok{(XY, }\DataTypeTok{IC=}\StringTok{"BIC"}\NormalTok{, }\DataTypeTok{family=}\NormalTok{binomial)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Morgan-Tatar search since family is non-gaussian.
+\end{verbatim}
+
+The best model according to BIC criteria uses Age and Ind with the
+coefficients as in the output. log(odds of
+disease)=-1.458+0.079(Age)-0.095(Ind) ii) Find the best models for a 0,
+1, 2, and 3 predictors using the Subsets command
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(leaps)}
+
+\NormalTok{Model <-}\StringTok{ }\KeywordTok{regsubsets}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind}\OperatorTok{+}\NormalTok{Gen, }\DataTypeTok{data=}\NormalTok{HealthDat, }\DataTypeTok{nbest=}\DecValTok{1}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(Model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Subset selection object
+## Call: regsubsets.formula(FShot ~ Age + Ind + Gen, data = HealthDat, 
+##     nbest = 1)
+## 3 Variables  (and intercept)
+##      Forced in Forced out
+## Age      FALSE      FALSE
+## Ind      FALSE      FALSE
+## Gen1     FALSE      FALSE
+## 1 subsets of each size up to 3
+## Selection Algorithm: exhaustive
+##          Age Ind Gen1
+## 1  ( 1 ) " " "*" " " 
+## 2  ( 1 ) "*" "*" " " 
+## 3  ( 1 ) "*" "*" "*"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fluzero.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\DecValTok{1}\NormalTok{,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{summary}\NormalTok{(fluzero.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ 1, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -0.5721  -0.5721  -0.5721  -0.5721   1.9447  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  -1.7272     0.2215  -7.797 6.34e-15 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 134.94  on 158  degrees of freedom
+## AIC: 136.94
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fluone.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Ind,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{summary}\NormalTok{(fluone.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Ind, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.3944  -0.5926  -0.3999  -0.2369   2.8476  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  4.91133    1.62651    3.02  0.00253 ** 
+## Ind         -0.11931    0.03013   -3.96  7.5e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 113.20  on 157  degrees of freedom
+## AIC: 117.2
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flutwo.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{summary}\NormalTok{(flutwo.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4479  -0.5708  -0.3390  -0.1629   2.8430  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.45778    2.91534  -0.500  0.61705   
+## Age          0.07787    0.02970   2.622  0.00873 **
+## Ind         -0.09547    0.03241  -2.946  0.00322 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.80  on 156  degrees of freedom
+## AIC: 111.8
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fluthree.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind}\OperatorTok{+}\NormalTok{Gen,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{summary}\NormalTok{(fluthree.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind + Gen, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4037  -0.5637  -0.3352  -0.1542   2.9394  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.17716    2.98242  -0.395  0.69307   
+## Age          0.07279    0.03038   2.396  0.01658 * 
+## Ind         -0.09899    0.03348  -2.957  0.00311 **
+## Gen1         0.43397    0.52179   0.832  0.40558   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.09  on 155  degrees of freedom
+## AIC: 113.09
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+0 Predictor model= log(odds of disease)=-1.7272 1 predictor model uses
+Ind: log(odds of disease)=4.911-0.119(Ind) 2 predictor model uses Age
+and Ind: log(odds of disease)=-1.458+0.079(Age)-0.095(Ind) 3 predictor
+model uses Age, Ind, and Gen: log(odds of
+disease)=-1.177+0.0729(Age)-0.099(Ind)+0.434(Gen1) iii) Find the best
+model for getting a flu shot according to the AIC criteria
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\NormalTok{null=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\DecValTok{1}\NormalTok{, }\DataTypeTok{family=}\NormalTok{binomial, }\DataTypeTok{data=}\NormalTok{HealthDat)}
+\NormalTok{full=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind}\OperatorTok{+}\NormalTok{Gen, }\DataTypeTok{family=}\NormalTok{binomial, }\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{step}\NormalTok{(full, }\DataTypeTok{data=}\NormalTok{HealthDat, }\DataTypeTok{direction=}\StringTok{"backward"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Start:  AIC=113.09
+## FShot ~ Age + Ind + Gen
+## 
+##        Df Deviance    AIC
+## - Gen   1   105.80 111.80
+## <none>      105.09 113.09
+## - Age   1   111.19 117.19
+## - Ind   1   115.80 121.80
+## 
+## Step:  AIC=111.8
+## FShot ~ Age + Ind
+## 
+##        Df Deviance    AIC
+## <none>      105.80 111.80
+## - Age   1   113.20 117.20
+## - Ind   1   116.27 120.27
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:  glm(formula = FShot ~ Age + Ind, family = binomial, data = HealthDat)
+## 
+## Coefficients:
+## (Intercept)          Age          Ind  
+##    -1.45778      0.07787     -0.09547  
+## 
+## Degrees of Freedom: 158 Total (i.e. Null);  156 Residual
+## Null Deviance:       134.9 
+## Residual Deviance: 105.8     AIC: 111.8
+\end{verbatim}
+
+According to AIC the best model uses predictors Age and Ind as follows:
+log(odds of disease)=-1.458+0.079(Age)-0.095(Ind)
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Find the best models for a 0, 1, 2, and 3 predictors using the Subsets
+  command
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(bestglm)}
+\NormalTok{best2.glm=}\KeywordTok{bestglm}\NormalTok{(XY, }\DataTypeTok{IC=}\StringTok{"AIC"}\NormalTok{, }\DataTypeTok{family=}\NormalTok{binomial)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Morgan-Tatar search since family is non-gaussian.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{best2.glm}\OperatorTok{$}\NormalTok{Subsets}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Intercept   Age   Ind   Gen logLikelihood      AIC
+## 0       TRUE FALSE FALSE FALSE     -67.47038 134.9408
+## 1       TRUE FALSE  TRUE FALSE     -56.59790 115.1958
+## 2*      TRUE  TRUE  TRUE FALSE     -52.89769 109.7954
+## 3       TRUE  TRUE  TRUE  TRUE     -52.54659 111.0932
+\end{verbatim}
+
+The best models using AIC for each number of predictors 0-3 produces the
+same best models as were listed above in part (ii).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{21}
+\tightlist
+\item
+  What model from the above models evaluated would you choose for this
+  situation? Explain BRIEFLY; you may include data from all parts of
+  Question 1.
+\end{enumerate}
+
+FShot \textasciitilde{} Age + Ind
+
+As both AIC which tends to overfit and BIC which tends to underfit
+selected these predictors as the best overall model, we will choose this
+as our best possible model to use as it is agreed upon by both criteria.
+
+The final model is log(odds of disease)=-1.458+0.079(Age)-0.095(Ind)
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Before implementing this model, what should you try to do to enhance
+  it?
+\end{enumerate}
+
+Add polynomial terms and test their significance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HealthDat}\OperatorTok{$}\NormalTok{AgeSq=HealthDat}\OperatorTok{$}\NormalTok{Age}\OperatorTok{^}\DecValTok{2}
+\NormalTok{HealthDat}\OperatorTok{$}\NormalTok{IndSq=HealthDat}\OperatorTok{$}\NormalTok{Ind}\OperatorTok{^}\DecValTok{2}
+
+
+\NormalTok{fluSq.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind}\OperatorTok{+}\NormalTok{AgeSq}\OperatorTok{+}\NormalTok{IndSq,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{summary}\NormalTok{(flutwo.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4479  -0.5708  -0.3390  -0.1629   2.8430  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.45778    2.91534  -0.500  0.61705   
+## Age          0.07787    0.02970   2.622  0.00873 **
+## Ind         -0.09547    0.03241  -2.946  0.00322 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.80  on 156  degrees of freedom
+## AIC: 111.8
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(fluSq.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind + AgeSq + IndSq, family = binomial, 
+##     data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7110  -0.5723  -0.3318  -0.2017   2.5082  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(>|z|)
+## (Intercept)  0.214549  14.260478   0.015    0.988
+## Age          0.229664   0.405241   0.567    0.571
+## Ind         -0.351741   0.263869  -1.333    0.183
+## AgeSq       -0.001119   0.003028  -0.369    0.712
+## IndSq        0.002384   0.002365   1.008    0.313
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 104.71  on 154  degrees of freedom
+## AIC: 114.71
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+Ho:β3=β4=0 Ha: Not Ho Dev(reduced)-Dev(full)=105.80-104.71=1.09
+p=P(\(X^2_2\)\textgreater{}1.09)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(flutwo.glm, fluSq.glm, }\DataTypeTok{test =} \StringTok{'LRT'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Deviance Table
+## 
+## Model 1: FShot ~ Age + Ind
+## Model 2: FShot ~ Age + Ind + AgeSq + IndSq
+##   Resid. Df Resid. Dev Df Deviance Pr(>Chi)
+## 1       156     105.80                     
+## 2       154     104.71  2   1.0894     0.58
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pchisq}\NormalTok{(}\FloatTok{1.09}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5798418
+\end{verbatim}
+
+As p=0.5798\textgreater{}Alpha=0.05, we fail to reject the null
+hypothesis and thus we can drop all of the predictors that were left out
+of the reduced model.
+
+Add interaction terms and test for their significance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fluInt.glm=}\KeywordTok{glm}\NormalTok{(FShot}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Ind}\OperatorTok{+}\NormalTok{Age}\OperatorTok{:}\NormalTok{Ind,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{HealthDat)}
+\KeywordTok{summary}\NormalTok{(flutwo.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind, family = binomial, data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4479  -0.5708  -0.3390  -0.1629   2.8430  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)   
+## (Intercept) -1.45778    2.91534  -0.500  0.61705   
+## Age          0.07787    0.02970   2.622  0.00873 **
+## Ind         -0.09547    0.03241  -2.946  0.00322 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.80  on 156  degrees of freedom
+## AIC: 111.8
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(fluInt.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = FShot ~ Age + Ind + Age:Ind, family = binomial, 
+##     data = HealthDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4239  -0.5872  -0.3409  -0.1469   2.8827  
+## 
+## Coefficients:
+##               Estimate Std. Error z value Pr(>|z|)
+## (Intercept)  1.2378112 13.0773400   0.095    0.925
+## Age          0.0377140  0.1917167   0.197    0.844
+## Ind         -0.1455268  0.2397655  -0.607    0.544
+## Age:Ind      0.0007486  0.0035400   0.211    0.833
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 134.94  on 158  degrees of freedom
+## Residual deviance: 105.75  on 155  degrees of freedom
+## AIC: 113.75
+## 
+## Number of Fisher Scoring iterations: 6
+\end{verbatim}
+
+Ho:β3=0 Ha: Not Ho Dev(reduced)-Dev(full)=105.75-104.71=1.04
+p=P(\(X^2_1\)\textgreater{}1.04)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(flutwo.glm, fluInt.glm, }\DataTypeTok{test =} \StringTok{'LRT'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Deviance Table
+## 
+## Model 1: FShot ~ Age + Ind
+## Model 2: FShot ~ Age + Ind + Age:Ind
+##   Resid. Df Resid. Dev Df Deviance Pr(>Chi)
+## 1       156     105.80                     
+## 2       155     105.75  1 0.045041   0.8319
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pchisq}\NormalTok{(}\FloatTok{1.04}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3078215
+\end{verbatim}
+
+As p=0.3078\textgreater{}Alpha=0.05, we fail to reject the null
+hypothesis and thus we can drop all of the predictors that were left out
+of the reduced model.
+
+Thus, our final best model includes no polynomial or interaction terms
+and is log(odds of disease)=-1.458+0.079(Age)-0.095(Ind) \pagebreak
+
+\section{Question 2.}\label{question-2.}
+
+A disease outbreak has occurred in a certain city. Data have been
+collected on a random telephone survey of 196 people within city limits
+and the following data recorded: 1) Whether or not they have contracted
+the disease (Dis, =1 if they have, =0 if not), Age, Socioeconomic Status
+(SES, = 1 if upper, = 2 if middle, = 3 if lower), Sector of the city
+they live (Sect, either sector 1 or sector 2), and saving account status
+(Sav, = 1 if they have a savings account, = 0 if not). data appear in
+Hwk6Q2DatSp19.
+
+Part A) Develop a logistic regression model for predicting the
+probability of contracting this disease, using the above variables. Be
+sure to check for polynomial effects of significant quantitative
+variables as well as interactions between significant predictor
+variables. When finished, explicitly state your prediction equation. Be
+sure to show significant steps in model development, using simultaneous
+tests when you want to omit/test more than one predictor. Start by
+factoring our binomial parameters and then obtaining a summary of the
+model with all predictors in.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{InfDat <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"Hwk6Q2DatSp19.xlsx"}\NormalTok{)}
+\NormalTok{InfDat}\OperatorTok{$}\NormalTok{Dis=}\KeywordTok{factor}\NormalTok{(InfDat}\OperatorTok{$}\NormalTok{Dis)}
+\NormalTok{InfDat}\OperatorTok{$}\NormalTok{SES=}\KeywordTok{factor}\NormalTok{(InfDat}\OperatorTok{$}\NormalTok{SES)}
+\NormalTok{InfDat}\OperatorTok{$}\NormalTok{Sect=}\KeywordTok{factor}\NormalTok{(InfDat}\OperatorTok{$}\NormalTok{Sect)}
+\NormalTok{InfDat}\OperatorTok{$}\NormalTok{Sav=}\KeywordTok{factor}\NormalTok{(InfDat}\OperatorTok{$}\NormalTok{Sav)}
+
+\NormalTok{inf.glm=}\KeywordTok{glm}\NormalTok{(Dis}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{SES}\OperatorTok{+}\NormalTok{Sect}\OperatorTok{+}\NormalTok{Sav,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{InfDat)}
+
+\KeywordTok{summary}\NormalTok{(inf.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + SES + Sect + Sav, family = binomial, 
+##     data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.6614  -0.8309  -0.5630   1.0134   2.0918  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -2.273558   0.479333  -4.743  2.1e-06 ***
+## Age          0.027280   0.009132   2.987 0.002813 ** 
+## SES2         0.035578   0.441452   0.081 0.935765    
+## SES3         0.237633   0.433750   0.548 0.583789    
+## Sect2        1.249464   0.357009   3.500 0.000466 ***
+## Sav1        -0.040692   0.396540  -0.103 0.918266    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 211.21  on 190  degrees of freedom
+## AIC: 223.21
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+SES and Sav appear to be insignificant so we will perform a simultaneous
+test to see if thy can be dropped.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{infred.glm=}\KeywordTok{glm}\NormalTok{(Dis}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Sect,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{InfDat)}
+\KeywordTok{summary}\NormalTok{(infred.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + Sect, family = binomial, data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.6839  -0.8199  -0.5606   1.0093   2.0275  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -2.15966    0.34388  -6.280 3.38e-10 ***
+## Age          0.02681    0.00865   3.100 0.001936 ** 
+## Sect2        1.18169    0.33696   3.507 0.000453 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 211.64  on 193  degrees of freedom
+## AIC: 217.64
+## 
+## Number of Fisher Scoring iterations: 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(infred.glm, inf.glm, }\DataTypeTok{test =} \StringTok{'LRT'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Deviance Table
+## 
+## Model 1: Dis ~ Age + Sect
+## Model 2: Dis ~ Age + SES + Sect + Sav
+##   Resid. Df Resid. Dev Df Deviance Pr(>Chi)
+## 1       193     211.64                     
+## 2       190     211.21  3  0.42984    0.934
+\end{verbatim}
+
+Ho: β2=β3=β5=0 Ha: Not Ho Dev(reduced)-Dev(full)=211.64-211.21=0.43
+p=P(\(X^2_3\)\textgreater{}0.4)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pchisq}\NormalTok{(}\FloatTok{0.43}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9339778
+\end{verbatim}
+
+As p=0.9339\textgreater{}Alpha=0.05, we fail to reject the null
+hypothesis and thus we can drop all of the predictors that were left out
+of the reduced model.
+
+Next we will check to see if any polynomial terms are significant
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{InfDat}\OperatorTok{$}\NormalTok{AgeSq=InfDat}\OperatorTok{$}\NormalTok{Age}\OperatorTok{^}\DecValTok{2}
+\NormalTok{InfDat}\OperatorTok{$}\NormalTok{AgeCub=InfDat}\OperatorTok{$}\NormalTok{Age}\OperatorTok{^}\DecValTok{3}
+
+\NormalTok{infCub.glm=}\KeywordTok{glm}\NormalTok{(Dis}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Sect}\OperatorTok{+}\NormalTok{AgeSq}\OperatorTok{+}\NormalTok{AgeCub,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{InfDat)}
+\NormalTok{infSq.glm=}\KeywordTok{glm}\NormalTok{(Dis}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Sect}\OperatorTok{+}\NormalTok{AgeSq,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{InfDat)}
+\KeywordTok{summary}\NormalTok{(infCub.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + Sect + AgeSq + AgeCub, family = binomial, 
+##     data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4134  -0.8308  -0.4869   0.9689   2.2511  
+## 
+## Coefficients:
+##               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -3.939e+00  8.642e-01  -4.559 5.15e-06 ***
+## Age          1.990e-01  8.387e-02   2.373 0.017641 *  
+## Sect2        1.311e+00  3.508e-01   3.738 0.000186 ***
+## AgeSq       -3.955e-03  2.449e-03  -1.615 0.106407    
+## AgeCub       2.395e-05  2.053e-05   1.167 0.243324    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 202.25  on 191  degrees of freedom
+## AIC: 212.25
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(infSq.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + Sect + AgeSq, family = binomial, data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4809  -0.8260  -0.5211   0.9359   2.2128  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -3.281981   0.582123  -5.638 1.72e-08 ***
+## Age          0.113425   0.033833   3.352 0.000801 ***
+## Sect2        1.278602   0.348733   3.666 0.000246 ***
+## AgeSq       -0.001194   0.000446  -2.677 0.007427 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 203.58  on 192  degrees of freedom
+## AIC: 211.58
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+As we drop polynomial terms we drop until al terms are signifcant which
+occurs when we have Age, Sect, and AgeSq(uared)
+
+Next we will check to see if any interaction terms are signifcant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{infint.glm=}\KeywordTok{glm}\NormalTok{(Dis}\OperatorTok{~}\NormalTok{Age}\OperatorTok{+}\NormalTok{Sect}\OperatorTok{+}\NormalTok{AgeSq}\OperatorTok{+}\NormalTok{Age}\OperatorTok{:}\NormalTok{AgeSq}\OperatorTok{+}\NormalTok{Age}\OperatorTok{:}\NormalTok{Sect}\OperatorTok{+}\NormalTok{AgeSq}\OperatorTok{:}\NormalTok{Sect,}\DataTypeTok{family=}\NormalTok{binomial,}\DataTypeTok{data=}\NormalTok{InfDat)}
+\KeywordTok{summary}\NormalTok{(infint.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + Sect + AgeSq + Age:AgeSq + Age:Sect + 
+##     AgeSq:Sect, family = binomial, data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.7121  -0.8514  -0.5010   1.0300   2.3117  
+## 
+## Coefficients:
+##               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -4.431e+00  1.165e+00  -3.804 0.000142 ***
+## Age          2.448e-01  1.008e-01   2.428 0.015165 *  
+## Sect2        2.087e+00  1.192e+00   1.750 0.080040 .  
+## AgeSq       -4.833e-03  2.778e-03  -1.740 0.081910 .  
+## Age:AgeSq    2.627e-05  2.340e-05   1.123 0.261454    
+## Age:Sect2   -7.143e-02  7.406e-02  -0.964 0.334807    
+## Sect2:AgeSq  1.131e-03  9.853e-04   1.148 0.250846    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 200.47  on 189  degrees of freedom
+## AIC: 214.47
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(infSq.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + Sect + AgeSq, family = binomial, data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4809  -0.8260  -0.5211   0.9359   2.2128  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -3.281981   0.582123  -5.638 1.72e-08 ***
+## Age          0.113425   0.033833   3.352 0.000801 ***
+## Sect2        1.278602   0.348733   3.666 0.000246 ***
+## AgeSq       -0.001194   0.000446  -2.677 0.007427 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 203.58  on 192  degrees of freedom
+## AIC: 211.58
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(infSq.glm, infint.glm, }\DataTypeTok{test =} \StringTok{'LRT'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Deviance Table
+## 
+## Model 1: Dis ~ Age + Sect + AgeSq
+## Model 2: Dis ~ Age + Sect + AgeSq + Age:AgeSq + Age:Sect + AgeSq:Sect
+##   Resid. Df Resid. Dev Df Deviance Pr(>Chi)
+## 1       192     203.57                     
+## 2       189     200.47  3   3.1047   0.3758
+\end{verbatim}
+
+Ho:β4=β5=β6=0 Ha: Not Ho Dev(reduced)-Dev(full)=203.58-200.47=3.11
+p=P(\(X^2_3\)\textgreater{}3.11)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pchisq}\NormalTok{(}\FloatTok{3.11}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3749743
+\end{verbatim}
+
+As p=0.375\textgreater{}Alpha=0.05, we fail to reject the null
+hypothesis and thus we can drop all of the predictors that were left out
+of the reduced model.
+
+The final model uses predictors Age Sect and \((Age)^2\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(infSq.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + Sect + AgeSq, family = binomial, data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4809  -0.8260  -0.5211   0.9359   2.2128  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -3.281981   0.582123  -5.638 1.72e-08 ***
+## Age          0.113425   0.033833   3.352 0.000801 ***
+## Sect2        1.278602   0.348733   3.666 0.000246 ***
+## AgeSq       -0.001194   0.000446  -2.677 0.007427 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 203.58  on 192  degrees of freedom
+## AIC: 211.58
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+The final prediction equation is log(odds of
+infection)=-3.281981+0.113425(Age)+1.278602(Sect2)-0.001194(AgeSq).
+
+Part B) Give a 90\% confidence interval for the probability that a 64
+year old patient, with middle socioeconomic status and a savings account
+that lives in sector 2 of the city, contracts the disease.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{newdata <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Age=}\DecValTok{64}\NormalTok{, }\DataTypeTok{Sect=}\StringTok{"2"}\NormalTok{, }\DataTypeTok{AgeSq=}\DecValTok{4096}\NormalTok{)}
+\KeywordTok{predict}\NormalTok{(infSq.glm, newdata,}\DataTypeTok{family=}\NormalTok{binomial, }\DataTypeTok{se.fit=}\OtherTok{TRUE}\NormalTok{,  }\DataTypeTok{interval=}\StringTok{"prediction"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $fit
+##       1 
+## 0.36516 
+## 
+## $se.fit
+## [1] 0.4239494
+## 
+## $residual.scale
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(infSq.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dis ~ Age + Sect + AgeSq, family = binomial, data = InfDat)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -1.4809  -0.8260  -0.5211   0.9359   2.2128  
+## 
+## Coefficients:
+##              Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -3.281981   0.582123  -5.638 1.72e-08 ***
+## Age          0.113425   0.033833   3.352 0.000801 ***
+## Sect2        1.278602   0.348733   3.666 0.000246 ***
+## AgeSq       -0.001194   0.000446  -2.677 0.007427 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 236.33  on 195  degrees of freedom
+## Residual deviance: 203.58  on 192  degrees of freedom
+## AIC: 211.58
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exp}\NormalTok{(}\FloatTok{0.36516}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.440745
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.05}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -1.644854
+\end{verbatim}
+
+log(odds of inf)=-3.281981+0.113425(64)+1.278602(1)-0.001194(4096)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{-}\FloatTok{3.281981}\OperatorTok{+}\FloatTok{0.113425}\OperatorTok{*}\NormalTok{(}\DecValTok{64}\NormalTok{)}\OperatorTok{+}\FloatTok{1.278602}\OperatorTok{*}\NormalTok{(}\DecValTok{1}\NormalTok{)}\OperatorTok{-}\FloatTok{0.001194}\OperatorTok{*}\NormalTok{(}\DecValTok{4096}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.365197
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exp}\NormalTok{(}\FloatTok{0.365197}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.440798
+\end{verbatim}
+
+We can be 90\% confident that odds of infection are between 0.365197 and
+1.440798 for this man. Thus, p/1-p=0.365197 and p/1-p=1.440798. Thus, p
+is between 0.2675 and 0.5903. Thus, we can be 90\% confident that the
+probability of this man being infected with this disease is between
+0.2675 and 0.5903. \#Question 3.
+
+A new organic pesticide is being tested for effectiveness and required
+dosage. An experiment was run where 30 randomly selected insects were
+exposed to an environment treated with six different dosages of the
+pesticide. Data observed were (in Hwk6Q3DatSp19):
+
+Dead = Number out of 30 killed by the pesticide at the given dose Alive
+= Number out of 30 not killed by the pesticide at the given dose Conc =
+Log base 10 of the concentration (parts per trillion) (YES, THAT'S LOG
+BASE 10!)
+
+Research question: How do the odds of killing an insect change when the
+concentration is increased by a factor of 10?
+
+Your answer to this question should contain the following parts:
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\tightlist
+\item
+  Formulation of the research question and choice of the appropriate
+  statistical technique used to answer this question.
+\end{enumerate}
+
+The research question is how do the odds of killing an insect change
+when the concentration is increased by a factor of 10. In studying the
+question, we fit a model using binary logistic regression with dependent
+variable being the ln(odds of killing an insect) and independent
+variables being the log(concentraction of dosage). With the fitted
+model, we can use a 95\% confidence interval to determine a confidence
+range on the coefficient for log(concentraction of dosage).
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Notation for the random variable(s) and parameter(s) of interest;
+  define these explicitly. Give the distributional assumptions for your
+  random variable(s) and state all assumptions necessary for the
+  statistical application you intend to use.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/kevinklaben/Downloads"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\NormalTok{KillDat <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"Hwk6Q3DatSp19.xlsx"}\NormalTok{)}
+
+
+\NormalTok{bug.glm =}\StringTok{ }\KeywordTok{glm}\NormalTok{(Dead}\OperatorTok{/}\NormalTok{(Dead}\OperatorTok{+}\NormalTok{Alive)}\OperatorTok{~}\NormalTok{Conc, }\DataTypeTok{family=} \StringTok{"quasibinomial"}\NormalTok{, }\DataTypeTok{weights=}\NormalTok{(Dead}\OperatorTok{+}\NormalTok{Alive),}\DataTypeTok{data=}\NormalTok{KillDat)}
+\KeywordTok{summary}\NormalTok{(bug.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dead/(Dead + Alive) ~ Conc, family = "quasibinomial", 
+##     data = KillDat, weights = (Dead + Alive))
+## 
+## Deviance Residuals: 
+##       1        2        3        4        5  
+## -0.4510   0.3597   0.0000   0.0643  -0.2045  
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -2.32379    0.14621  -15.89 0.000542 ***
+## Conc         1.16189    0.06348   18.30 0.000356 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for quasibinomial family taken to be 0.1224225)
+## 
+##     Null deviance: 64.76327  on 4  degrees of freedom
+## Residual deviance:  0.37875  on 3  degrees of freedom
+## AIC: NA
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+The binomial logistic regression is used with the following model:
+Yi=ln(pi(Xi)/(1-pi(Xi)))= β0 + β1Xi We make the following assumptions
+for the model: Xi=the log of the concentration of pesticide used Yi=the
+probability that an insect dies for a given log of concentration of
+pesticide. β0=the ln(odds of the insect dying) when the
+log(concentration)=0. β1=ln(odds ratio when log(concentration) is
+increase by 1) b.i) The observations are independent b.ii) The data are
+assumed to be distributed according to the binomial distribution with
+the probability of success being pi(x)=1/(1+e\^{}-(β0 + β1Xi)).
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Calculations for the analysis. For hypothesis and significance tests,
+  formulate the null and the alternative hypotheses, calculate the value
+  of your test statistic, and then calculate your p-value. For
+  confidence intervals, show and apply the appropriate formula. Use
+  \(\alpha\) = .05 if not otherwise specified.
+\end{enumerate}
+
+Perform a Wald test to confirm that the coefficient β1 is significant
+Ho: β1=0 Ha: β1\textgreater{}0
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\FloatTok{1.16189}\OperatorTok{-}\DecValTok{0}\NormalTok{)}\OperatorTok{/}\FloatTok{0.06348}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 18.30325
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{0.000356}\OperatorTok{/}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.000178
+\end{verbatim}
+
+z=Test statistic=((pt est)-(hyp
+value))/SE(est)=(1.16189-0)/0.06348=18.30325
+p(18.30325\textgreater{}0)=0.000356/2=0.000178 As
+p=0.000178\textless{}alpha=0.05, we reject the null hypothesis and
+conclude that the coefficient is significant and shouold be included as
+part of the model as a predictor.
+
+We will not compute a 95\% confidence interval for β1.
+
+z(alpha/2)=1.96
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{1.16189}\OperatorTok{-}\FloatTok{1.96}\OperatorTok{*}\NormalTok{(}\FloatTok{0.06348}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.037469
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{1.16189}\OperatorTok{+}\FloatTok{1.96}\OperatorTok{*}\NormalTok{(}\FloatTok{0.06348}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.286311
+\end{verbatim}
+
+1.16189 +/-1.96(0.06348)=(1.037469,1.286311) these must be exponetiated
+with base e as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exp}\NormalTok{(}\FloatTok{1.037469}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.822065
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{exp}\NormalTok{(}\FloatTok{1.286311}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.61941
+\end{verbatim}
+
+Thus, we can be 95\% confident that the odds of killing an insect go up
+by between 182.2\% and 261.9\% for each increase in concentration by a
+factor of 10.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Discuss whether the assumptions stated in Part B above are met
+  sufficiently for the validity of the statistical inferences; use
+  graphs and other tools where applicable.
+\end{enumerate}
+
+As it is stated that the insect were selected randomly, we can assume
+that the insects are independent.
+
+To test whether the assumption that pi(x) follows a logistic model we
+can perfomr a goodness of fit test. Ho: β1=0 Ha: Not Ho
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(bug.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dead/(Dead + Alive) ~ Conc, family = "quasibinomial", 
+##     data = KillDat, weights = (Dead + Alive))
+## 
+## Deviance Residuals: 
+##       1        2        3        4        5  
+## -0.4510   0.3597   0.0000   0.0643  -0.2045  
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -2.32379    0.14621  -15.89 0.000542 ***
+## Conc         1.16189    0.06348   18.30 0.000356 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for quasibinomial family taken to be 0.1224225)
+## 
+##     Null deviance: 64.76327  on 4  degrees of freedom
+## Residual deviance:  0.37875  on 3  degrees of freedom
+## AIC: NA
+## 
+## Number of Fisher Scoring iterations: 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bugnull.glm =}\StringTok{ }\KeywordTok{glm}\NormalTok{(Dead}\OperatorTok{/}\NormalTok{(Dead}\OperatorTok{+}\NormalTok{Alive)}\OperatorTok{~}\DecValTok{1}\NormalTok{, }\DataTypeTok{family=} \StringTok{"quasibinomial"}\NormalTok{, }\DataTypeTok{weights=}\NormalTok{(Dead}\OperatorTok{+}\NormalTok{Alive),}\DataTypeTok{data=}\NormalTok{KillDat)}
+\KeywordTok{summary}\NormalTok{(bugnull.glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Dead/(Dead + Alive) ~ 1, family = "quasibinomial", 
+##     data = KillDat, weights = (Dead + Alive))
+## 
+## Deviance Residuals: 
+##      1       2       3       4       5  
+## -5.186  -2.607   0.000   2.999   4.699  
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)
+## (Intercept) 1.886e-15  6.154e-01       0        1
+## 
+## (Dispersion parameter for quasibinomial family taken to be 14.2)
+## 
+##     Null deviance: 64.763  on 4  degrees of freedom
+## Residual deviance: 64.763  on 4  degrees of freedom
+## AIC: NA
+## 
+## Number of Fisher Scoring iterations: 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FloatTok{64.763}\OperatorTok{-}\FloatTok{0.37875}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 64.38425
+\end{verbatim}
+
+TS= Null deviance- residual deviance=64.763-0.37875= 64.38425 \(X^2\) df
+is the number of observations-number of estimated parameters=5
+concentrations-2 estmated parameters=3 df
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{pchisq}\NormalTok{(}\FloatTok{64.38425}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6.794565e-14
+\end{verbatim}
+
+P(\$X\^{}2\_3\textgreater{}64.38425)= 6.794565e-14
+
+As p=6.794565e-14\textless{}alpha=0.05, we reject the null hypothesis
+and conclude that the coefficient is significnat and that pi(x) follows
+a logistic model.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Discuss the sampling scheme and whether or not it is sufficient to
+  meet the objective of the study. Be sure to include whether or not
+  subjective inference is necessary and if so, defend whether or not you
+  believe it is valid.
+\end{enumerate}
+
+The sampling scheme here is that insects are randomly selected and
+treated by one of the five concentration levels. As we are interested in
+the odds of insects dying when subjected to pesticide concentrations,
+this sample is sufficient to meet the objective of the study. As the
+sample population can be assumed to be selected from the overall insect
+population randomly and population of interest is the insect population,
+subjective inference is not necessary as the sample
+population=population of interest.
+
+\begin{enumerate}
+\def\labelenumi{\Alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  State the conclusions of the analysis. These should be practical
+  conclusions from the context of the problem, but should also be backed
+  up with statistical criteria (like a p-value, etc.). Include any
+  considerations such as limitations of the sampling scheme, impact of
+  outliers, etc., that you feel must be considered when you state your
+  conclusions.
+\end{enumerate}
+
+After analysis of the data by fitting with a binary logistic regression,
+we can conclude that we are 95\% confident that one average for each
+increase in concentration of pesticide by a factor of ten,the
+probability of an insect dying can be expected to increase by between
+182.2\% and 261.9\%. As our assumptions were satisfied and the sample
+scheme is sufficient to meet the objective of the study we hold no
+reservations about these conclusions.
+
+
+\end{document}

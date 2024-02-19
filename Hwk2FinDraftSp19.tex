@@ -1,0 +1,774 @@
+\documentclass[12pt,]{article}
+\usepackage{lmodern}
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={BTRY 3020/STSCI 3200 Homework II},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{BTRY 3020/STSCI 3200 Homework II}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\begin{document}
+\maketitle
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{NAME: Kevin Klaben}\label{name-kevin-klaben}
+
+\section{NETID: kek228}\label{netid-kek228}
+
+\section{\texorpdfstring{\textbf{DUE DATE: February 19 2019, by
+electronic submission of a PDF on BlackBoard by 8:40
+am}}{DUE DATE: February 19 2019, by electronic submission of a PDF on BlackBoard by 8:40 am}}\label{due-date-february-19-2019-by-electronic-submission-of-a-pdf-on-blackboard-by-840-am}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{Question 1.}\label{question-1.}
+
+An experiment was conducted where 13 subjects were asked to remember
+disconnected items in a list. They were then randomly assigned a time
+from 1 to 10080 minutes, each then waited this amount of time, and
+subsequently were then asked about the items in the list. The proportion
+of items (prop) correctly recalled after these various times (time, in
+minutes) since the list was memorized were recorded (Hwk2Q1DatSp19).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  AS ALWAYS, plot the data and determine if linear regression is
+  appropriate.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/kevinklaben/Downloads"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Pdata <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"Hwk2Q1DatSp19.xlsx"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(Pdata}\OperatorTok{$}\NormalTok{time, Pdata}\OperatorTok{$}\NormalTok{prop, }\DataTypeTok{xlab =} \StringTok{"Time since last memorization in minutes"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Proportion of items remembered"}\NormalTok{, }\DataTypeTok{main =} \StringTok{"Time since last memorization of a list of disconnected items vs. Proposition of items remembered"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-1-1.pdf}
+A linear regression of this raw data is clearly not applicable. There is
+a clear curvature to the data thus it should not be fitted with a linear
+regression. b) Regardless of the results from part a, go ahead and run
+the regression and get the diagnostic plots. i) What does the residual
+plot tell you?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\NormalTok{Pdata.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(prop}\OperatorTok{~}\NormalTok{time, }\DataTypeTok{data =}\NormalTok{ Pdata)}
+\NormalTok{Resids=}\KeywordTok{studres}\NormalTok{(Pdata.lm)}
+\KeywordTok{plot}\NormalTok{(Pdata.lm}\OperatorTok{$}\NormalTok{fitted.values,Resids)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-2-1.pdf}
+The residual plot tells us that this data is heteroskedastic. Thus, the
+variance of the data across the x's is not constant and follows a
+non-linear relationship. This informs us that a linear regression is not
+applicable with the current state of the data.
+
+\begin{verbatim}
+ii) What does the qqPlot tell you?
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqPlot}\NormalTok{(Pdata.lm}\OperatorTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{verbatim}
+## [1] 1 2
+\end{verbatim}
+
+The qqplot tells us that the data is normal interms of the y's at every
+x. As all points fall within the 95\% confidence bands we can be fairly
+certain that the proportions normally distributed at each time.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Based on the plots from parts a and b above, suggest a transformation
+  that you expect to give you correct diagnostic plots. DEFEND YOUR
+  ANSWER. The transformation I suggest is taking the log of the
+  predictor variable time. This makes sense as we need to bring the x's
+  in this by taking the log of the x's, the large x values will get
+  smaller by a large amount while the smaller x values will get only a
+  small amount smaller. This should fix both the heterskedasticity and
+  the non-linear relationship
+\item
+  Perform the transformation you suggested and plot the transformed
+  data. Does it now appear that linear regression is appropriate on the
+  transformed data? If not, go back and try another transformation and
+  plot that to see if linear regression appears appropriate for this new
+  tramnsformation. Repeat until you've found a transformation that
+  linearizes the relationship.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Pdata}\OperatorTok{$}\NormalTok{logtime<-}\KeywordTok{log}\NormalTok{(Pdata}\OperatorTok{$}\NormalTok{time)}
+\KeywordTok{plot}\NormalTok{(Pdata}\OperatorTok{$}\NormalTok{logtime, Pdata}\OperatorTok{$}\NormalTok{prop, }\DataTypeTok{xlab =} \StringTok{"log(Time since last memorization in minutes)"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Proportion of items remembered"}\NormalTok{, }\DataTypeTok{main =} \StringTok{"Time since last memorization of a list of disconnected items vs. Proposition of items remembered"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Run the linear regression using the transformation you suggested in c
+  above and get the residual plot and qqPlot of residuals and see if
+  your transformed data produces a linear regression that appears
+  appropriate.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\NormalTok{Plogdata.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(prop}\OperatorTok{~}\NormalTok{logtime, }\DataTypeTok{data =}\NormalTok{ Pdata)}
+\NormalTok{Resids=}\KeywordTok{studres}\NormalTok{(Plogdata.lm)}
+\KeywordTok{plot}\NormalTok{(Plogdata.lm}\OperatorTok{$}\NormalTok{fitted.values,Resids)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\KeywordTok{qqPlot}\NormalTok{(Plogdata.lm}\OperatorTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\begin{verbatim}
+## [1]  8 13
+\end{verbatim}
+
+Both the residual plot and the qqplot look great, the data is now
+homoskedastic and the y's are normally distributed around each x.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Run the regression using your transformed data. Does the proportion
+  remembered decrease with time? Test at \(\alpha = .05\), being sure to
+  state hypotheses, test statistic, EXACT p-value, and conclusions.
+  \(H_0\) The proportion does not decrease with time
+  \(B_1\)\textgreater{}=0 \(H_A\) The proportion decreases with time
+  \(B_1\)\textless{}0
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(Plogdata.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = prop ~ logtime, data = Pdata)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.027656 -0.007620 -0.003231  0.008787  0.029406 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  0.843231   0.010064   83.79  < 2e-16 ***
+## logtime     -0.079795   0.001713  -46.59 5.45e-14 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.01658 on 11 degrees of freedom
+## Multiple R-squared:  0.995,  Adjusted R-squared:  0.9945 
+## F-statistic:  2171 on 1 and 11 DF,  p-value: 5.449e-14
+\end{verbatim}
+
+P(t-11df\textgreater{}-46.59)= 2.72e-14 As 2.72e-14 is less than our
+alpha value of 0.05, we reject the null hypothesis and conclude that the
+proportion does in fact decrease with time. g) State AND INTERPRET the
+\(r^2\) from the regression you used. \(r^2\) for the regression is
+0.995, this means that 99.5\% of the variation in the proportion of
+items remembered can be explained by the variation in log(time give that
+the items must be remembered for).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{7}
+\item
+  State and interpret 1 - \(r^2\) from the regression you used. 1-
+  \(r^2\) for the regression is 0.005, this means that 0.5\% of the
+  variation in the proportion of items remembered cannot be explained by
+  the variation in log(time give that the items must be remembered for).
+\item
+  Would we expect the proportion remembered from people who are asked to
+  remember after 1000 minutes to exceed 27\%? (You might have to type
+  ?predict in your console to figure out how to get what you need.)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{newdata=}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{logtime=}\KeywordTok{log}\NormalTok{(}\DecValTok{1000}\NormalTok{))}
+\KeywordTok{predict.lm}\NormalTok{(Plogdata.lm, newdata, }\DataTypeTok{interval=}\StringTok{"confidence"}\NormalTok{, }\DataTypeTok{level=}\FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         fit       lwr       upr
+## 1 0.2920265 0.2800851 0.3039678
+\end{verbatim}
+
+We can be 95\% confident that on average the proportion remembered for
+people asked to remember after 1000 minutes will be between 0.280 and
+0.304. Thus, as this entire range exceeds 27\%, we can be at least 95\%
+confident that the proportion will exceed 27\% for people given 1000
+minutes. j) Noah Ohnoah is asked to remember this list after waiting 500
+minutes since seeing it. What proportion will Noah remember?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{newdata=}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{logtime=}\KeywordTok{log}\NormalTok{(}\DecValTok{500}\NormalTok{))}
+\KeywordTok{predict.lm}\NormalTok{(Plogdata.lm, newdata, }\DataTypeTok{interval=}\StringTok{"prediction"}\NormalTok{, }\DataTypeTok{level=}\FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         fit       lwr       upr
+## 1 0.3473362 0.3092809 0.3853915
+\end{verbatim}
+
+The probability that Noah will remember between 30.9\% and 38.5\% of
+items after 500 minutes is 95\%. \pagebreak
+
+\section{Question 2.}\label{question-2.}
+
+The use of insecticides is beneficial for increasing agricultural
+production but is a major concern for consumers' advocates and
+environmentalists. Insecticides protect crops against insect damage, but
+insecticide use may be harmful to humans.
+
+A horticultural researcher working for New York State extension in
+Oneida County, in central New York, would like to investigate the
+relationship between the size of apples and the concentration of a new
+insecticide (ppm) retained in them. She first applies the insecticide
+across their experimental orchard following guidelines set forward by
+USDA. The orchard contains dozens of each apple variety commonly grown
+in New York. She then randomly selects 41 trees and harvests 1 apple on
+each of these sampled trees. The amount of insecticide retained by each
+apple is determined in the lab. The diameter of each apple is also
+measured. (Data for this problem can be found in the file
+\texttt{Hwk2Q3DatSp18.xlsx})
+
+The average apple in New York State is 6.6 cm across. State regulations
+for use of this insecticide, which has been shown to be extremely
+effective and relatively inexpensive, require the average sized apple to
+contain less than 2.8 ppm of insecticide, on average. Do these data show
+that the insecticide can be allowed for use in New York State?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Formulation of the research question and choice of the appropriate
+  statistical technique technique used to answer this question.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(readxl)}
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/kevinklaben/Downloads"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Qtwodata <-}\StringTok{ }\KeywordTok{read_excel}\NormalTok{(}\StringTok{"Hwk2Q2DatSp19.xlsx"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(Qtwodata}\OperatorTok{$}\StringTok{`}\DataTypeTok{Diameter of the Apple (X in cm)}\StringTok{`}\NormalTok{, Qtwodata}\OperatorTok{$}\StringTok{`}\DataTypeTok{Insecticide Dose Found (Y, in ppm)}\StringTok{`}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"Diameter of the Apple (X in cm)"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Insecticide Dose Found (Y, in ppm)"}\NormalTok{, }\DataTypeTok{main =} \StringTok{"Diameter of the Apple (X in cm) vs. Insecticide Dose Found (Y, in ppm) in New York state apples"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+Research Question. Via the plot, we can see that the question should be
+whether there is a linear relationship that exists between some
+transformation of the Diameter of the Apple (in cm) and Insecticide Dose
+Found (in ppm), so that we could use Diameter of the Apple (in cm) to
+predict Insecticide Dose Found (in ppm). Statistical Technique. Fit a
+linear model with some transformation of Diameter of the Apple (in cm)
+being the explanatory variable and some transformation of Insecticide
+Dose Found (in ppm) being the response variable. Then we use two-sided
+t-test to test the significance of β1 (the slope). If the model appears
+to be siginifant, we then use this model to perform a hypothesis test
+with for apple diameter=6.6 with \(H_0\) = the insecticide for the
+average sized apple is on average greater than or equal to 2.8 ppm.
+\(H_A\) = the insecticide for the average sized apple is on average less
+than 2.8 ppm.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\NormalTok{Qtwodata.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\StringTok{`}\DataTypeTok{Insecticide Dose Found (Y, in ppm)}\StringTok{`}\OperatorTok{~}\StringTok{`}\DataTypeTok{Diameter of the Apple (X in cm)}\StringTok{`}\NormalTok{, }\DataTypeTok{data =}\NormalTok{ Qtwodata)}
+\NormalTok{Resids=}\KeywordTok{studres}\NormalTok{(Qtwodata.lm)}
+\KeywordTok{plot}\NormalTok{(Qtwodata.lm}\OperatorTok{$}\NormalTok{fitted.values,Resids)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\KeywordTok{qqPlot}\NormalTok{(Qtwodata.lm}\OperatorTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-10-2.pdf}
+
+\begin{verbatim}
+## [1] 41 38
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Qtwodata}\OperatorTok{$}\NormalTok{loginsect<-}\KeywordTok{log}\NormalTok{(Qtwodata}\OperatorTok{$}\StringTok{`}\DataTypeTok{Insecticide Dose Found (Y, in ppm)}\StringTok{`}\NormalTok{)}
+\NormalTok{Qtwodata}\OperatorTok{$}\NormalTok{logapp<-(Qtwodata}\OperatorTok{$}\StringTok{`}\DataTypeTok{Diameter of the Apple (X in cm)}\StringTok{`}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(Qtwodata}\OperatorTok{$}\NormalTok{logapp, Qtwodata}\OperatorTok{$}\NormalTok{loginsect, }\DataTypeTok{xlab =} \StringTok{"Diameter of the Apple (X in cm)"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Insecticide Dose Found (Y, in ppm)"}\NormalTok{, }\DataTypeTok{main =} \StringTok{"Diameter of the Apple (X in cm) vs. Insecticide Dose Found (Y, in ppm) in New York state apples"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-10-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(MASS)}
+\NormalTok{Qtwodataloginsect.lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(loginsect}\OperatorTok{~}\NormalTok{logapp, }\DataTypeTok{data =}\NormalTok{ Qtwodata)}
+\NormalTok{Resids=}\KeywordTok{studres}\NormalTok{(Qtwodataloginsect.lm)}
+\KeywordTok{plot}\NormalTok{(Qtwodataloginsect.lm}\OperatorTok{$}\NormalTok{fitted.values,Resids)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-10-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\KeywordTok{qqPlot}\NormalTok{(Qtwodataloginsect.lm}\OperatorTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-10-5.pdf}
+
+\begin{verbatim}
+## [1] 2 6
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Notation for the random variable(s) and parameter(s) of interest;
+  define these explicitly. Give the distributional assumptions for your
+  random variable(s) and state all assumptions necessary for the
+  statistical application you intend to use.
+\end{enumerate}
+
+\textbf{Notation.} Let \(Y_i\) be the Amount of Insecticide (in ppm) and
+\(X_i\) be the log of apple diameter. Then we could write our proposed
+linear models as
+
+\begin{align}
+Y_i=\beta_0+\beta_1log(X_i)+\epsilon_i,
+\end{align}
+
+where \(\epsilon_i\) is the error term for the \(i\)th observation.
+
+\textbf{Assumptions.} We make the following assumptions for the model:
+
+\begin{enumerate}
+\item \emph{(Independence).} Observations (and hence residuals) are independent
+\item \emph{(Normality).} $\epsilon_i\overset{i.i.d}{\sim}\mathrm{N}(0,\sigma^2)$
+\item \emph{(Linearity).} Means of $\log(Y_i)$ are linearly related to $X_i$.
+\item \emph{(Homoscedasticity).} $\epsilon_i$ have constanct variance.
+\item \emph{(Negligible Outliers).} Outliers are not driving our conclusions
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Calculations for the analysis. For hypothesis and significance tests,
+  formulate the null and the alternative hypotheses, calculate the value
+  of your test statistic, and then calculate your p-value. For
+  confidence intervals, show and apply the appropriate formula. Use
+  \(\alpha=0.10\).
+\end{enumerate}
+
+First, we test the siginificance of the linear model. Formally, we are
+testing
+
+\begin{align}
+H_0: \beta_1 = 0 \text{ against } H_1: \beta_1\neq 0
+\end{align}
+
+To do this, we have
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X =}\StringTok{ }\NormalTok{Qtwodata}\OperatorTok{$}\NormalTok{logapp}
+\NormalTok{Y =}\StringTok{ }\NormalTok{Qtwodata}\OperatorTok{$}\NormalTok{loginsect}
+\NormalTok{proposed.model =}\StringTok{ }\KeywordTok{lm}\NormalTok{(Y}\OperatorTok{~}\NormalTok{X)}
+\KeywordTok{summary}\NormalTok{(proposed.model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Y ~ X)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.57704 -0.03159 -0.01361  0.00227  0.60178 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -15.32433    0.32368  -47.34   <2e-16 ***
+## X             2.42836    0.04993   48.63   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2034 on 39 degrees of freedom
+## Multiple R-squared:  0.9838, Adjusted R-squared:  0.9834 
+## F-statistic:  2365 on 1 and 39 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\textbf{Conclusion.} From the summary, we see that the test of
+\(\beta_1\) has a \(p\)-value of 2e-16, which is significantly smaller
+than 0.05. Therefore, we reject the null hypothesis and conclude that
+the linear relationship between expired volume and oxygen uptake is
+significant .
+
+Secondarily, we make a hypothesis test for \(X=6.6\) with alpha=0.10.
+\(H_0\) = the insecticide for the average sized apple is on average
+greater than or equal to 2.8 ppm. \(H_A\) = the insecticide for the
+average sized apple is on average less than 2.8 ppm.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{confinv =}\StringTok{ }\KeywordTok{predict.lm}\NormalTok{(proposed.model,}\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{X=}\FloatTok{6.6}\NormalTok{),}\DataTypeTok{se.fit=}\OtherTok{TRUE}\NormalTok{,}\DataTypeTok{interval=}\StringTok{"confidence"}\NormalTok{, }\DataTypeTok{level=}\FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We know that the t-value will be = ((pt. Est.)-(hypothesized
+value))/Se(pt est) using a confidence interval we can determine that the
+pt. est. is 0.703 and the standard error=0.0326
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tvalue=}\StringTok{ }\NormalTok{(}\FloatTok{0.703}\OperatorTok{-}\KeywordTok{log}\NormalTok{(}\FloatTok{2.8}\NormalTok{))}\OperatorTok{/}\FloatTok{0.0326}
+\NormalTok{pval=}\KeywordTok{pt}\NormalTok{(}\OperatorTok{-}\FloatTok{10.019}\NormalTok{,}\DataTypeTok{df=}\DecValTok{39}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Thus, the t-value= (0.703-log(2.8))/0.0326=-10.019
+p-val=pt(-10.019,df=n-1)=1.212e-12 As the p-value of
+1.212e-12\textless{} 0.1, we reject the null hypothesis and conclude
+that the amount of insecticide in average sized apples will on average
+be less than 2.8 ppm.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Discuss whether the assumptions stated in part B above are met
+  sufficiently for the validity of the statistical inferences; use
+  graphs and other tools where applicable.
+\end{enumerate}
+
+\emph{(Independence).} Each sampled apple is independent from the next
+if the target population was apples at this specific farm as they are
+chosen randomly from different trees.
+
+\emph{(Normality of Residuals).} We do qqplot to check for normality.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(car)}
+\CommentTok{# qqplot for checking normality}
+\NormalTok{std.residual =}\StringTok{ }\KeywordTok{rstandard}\NormalTok{(proposed.model)}
+\KeywordTok{qqPlot}\NormalTok{(std.residual, }\DataTypeTok{main=}\StringTok{"QQ plot with confidence intervals"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{verbatim}
+## [1] 2 6
+\end{verbatim}
+
+Since many points (probably more than 5\%) fall outside of the
+confidence bands, the normality assumption is not totally valid here.
+However, the bands are quite narrow with this large of a data set, and
+the deviation around the line is mostly on the tails. Therefore, we can
+trust that the robustness of the t-procedures used here against minor to
+moderate deviations from normality make our conclusions valid in this
+case.
+
+\emph{(Linearity).} It can be verified from the previous scatterplot.
+
+\emph{(Homoskedasticity).} The relatively constant variance around the
+line seems apparent from the residual plot, and so this assumption
+appears to be met. Take a better look with a residual plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# residuals vs fits for checking homoscedasticity}
+\KeywordTok{plot}\NormalTok{(proposed.model}\OperatorTok{$}\NormalTok{fit, std.residual, }\DataTypeTok{xlab =}\StringTok{"Fits"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Standardized Residuals"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+Most of the points in the above residual plot distribute evenly above
+and below the zero line, so homoscedasticity assumption is valid.
+
+\emph{(Negligible Outliers).} There were no outliers apparent from any
+of the diagnostic plots other than the tails, Let's take a look at a
+Cook's Distance plot to see if any are influential.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(proposed.model, }\DataTypeTok{which =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Hwk2FinDraftSp19_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+With all Cook's Distances less than 0.5, no particular point seems to be
+strongly influencing our inferences
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{4}
+\item
+  Discuss the sampling scheme and whether or not it is sufficient to
+  meet the objective of the study. Be sure to include whether or not
+  subjective inference is necessary and if so, defend whether or not you
+  believe it is valid. The data was randomly sampled from a single farm
+  in Oneida, NY. This is not suffient on its own to meet the objective
+  of this study as the sampled population (apples at this specific
+  Oneida farm) is not the same as the target population (Apples in New
+  York State). Thus, subjective inference is required to validate our
+  findings. However, this data may not be reliable to transfer to the
+  population of new york state apples in general, as different farms and
+  slightly different climate throughout the state may have some effect
+  on insecticide retention. As these are simply speculated possibilities
+  and not facts we have no legitimate reason to believe that the sampled
+  population is not representative of the target population, however, if
+  a link between climate or farm technique and insecticide retention is
+  discovered, our data will be cast into doubt.
+\item
+  State the conclusions of the analysis. These should be practical
+  conclusions from the context of the problem, but should also be backed
+  up with statistical criteria (like a p-value, etc.). Include any
+  considerations such as limitations of the sampling scheme, impact of
+  outliers, etc., that you feel must be considered when you state your
+  conclusions.
+\end{enumerate}
+
+We may conclude tentatively that for apples 6.6 cm in diameter, they
+will on average contain less than 2.8 ppm insecticide with a p value of
+1.212e-12. Despite the limitations, which include tails which vary by a
+larger amount than the rest of the data, and the sampling scheme selects
+from a sample population that may not completely be representative of
+the overall population of interest, we can be fairly certain that this
+conclusion is valid as the results are much stronger than required as a
+p value of 1.212e-12 is very strong. Thus, despite the limitations of
+the data we can be fairly confident thatthis insecticide follows the NYS
+reuglations.
+
+
+\end{document}

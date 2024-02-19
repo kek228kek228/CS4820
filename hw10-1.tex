@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+\usepackage{tikz}
+\usepackage{xcolor,colortbl}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is FULLPAGE.STY by H.Partl, Version 2 as of 15 Dec 1988.
+% Document Style Option to fill the paper just like Plain TeX.
+
+\typeout{Style Option FULLPAGE Version 2 as of 15 Dec 1988}
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+
+\textheight 8.9in
+
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+
+\textwidth 6.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textwidth}{6.8in}
+\setlength{\textheight}{9.5in}
+
+
+\def\ind{\hspace*{0.3in}}
+\def\gap{0.1in}
+\def\bigap{0.25in}
+\newcommand{\Xomit}[1]{}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+
+\begin{document}
+
+\setlength{\parindent}{0in}
+\addtolength{\parskip}{0.1cm}
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{{\bf
+CS 4820, Spring 2019 \hfill Homework 10, Problem 1}\\
+% TODO: fill in your own name, netID, and collaborators
+Name: \\
+NetID: \\
+}}
+\end{center}
+\vspace{5mm}
+\vskip \bigap
+{\bf (1)} {\em (15 points)} Consider the problem of MAX-SPREAD, where we are given as input a list of locations $\{1,\ldots,n\}$, and a distance function $d$ (supplied as a $n \times n$ matrix), where $d(i,j)$ denotes the distance between location $i$ and location $j$, and  an integer $C$. The distance function is restricted to be a metric (see below for a definition). For a set $S \subseteq \{1,\ldots,n \}$, define $spread(S)~=~\min_{i, j \in S, i \neq j} d(i,j)$. Your task is to output a subset $S \subseteq \{ 1,\ldots,n\}$ of cardinality $C$ that  \textbf{maximizes} $spread(S)$.
+
+{\bf (1a)} {\em (5 points)} Consider the decision version of MAX-SPREAD, denoted by D-MAX-SPREAD, where the input, in addition to the input of MAX-SPREAD, contains an integer $\alpha$, and it is a YES instance if and only if there exists a subset $S \subseteq \{1,\ldots,n \}$ of cardinality $C$ such that $spread(S)$  \textbf{is at least} $ \alpha$. Prove that D-MAX-SPREAD is NP-complete.
+
+\vskip \gap
+ 
+{\bf (1b)} {\em (10 points)} Design an efficient $2$-approximation algorithm for MAX-SPREAD. 
+
+\vskip \gap
+[\emph{Definition of a metric:} \hspace{0.2cm}The distance function $d:\{1,\ldots n \} \times \{1,\ldots,n \} \rightarrow \mathbb{R}$ is a metric if it satisfies the following constraints:  for all $i, j, k \in \{1,\ldots,n\}$,
+\begin{itemize}
+\item $d(i,j) \ge 0$ 
+\item $d(i,j)=0$ if and only if $i=j$,
+\item $d(i,j) = d(j,i)$,
+\item $d(i,j) + d(j,k) \ge d(i,k)$. ]
+\end{itemize}
+
+
+%% Your solution goes here.
+
+
+\end{document}

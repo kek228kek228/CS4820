@@ -1,0 +1,141 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+\usepackage{tikz}
+\usepackage{xcolor,colortbl}
+\usepackage{wrapfig}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is FULLPAGE.STY by H.Partl, Version 2 as of 15 Dec 1988.
+% Document Style Option to fill the paper just like Plain TeX.
+
+\typeout{Style Option FULLPAGE Version 2 as of 15 Dec 1988}
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+
+\textheight 8.9in
+
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+
+\textwidth 6.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textwidth}{6.8in}
+\setlength{\textheight}{9.5in}
+
+
+\def\ind{\hspace*{0.3in}}
+\def\gap{0.1in}
+\def\bigap{0.25in}
+\newcommand{\Xomit}[1]{}
+
+
+\begin{document}
+
+\setlength{\parindent}{0in}
+\addtolength{\parskip}{0.1cm}
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{{\bf
+CS 4820, Spring 2019 \hfill Homework 2, Problem 2}\\
+% TODO: fill in your own name, netID, and collaborators
+Name: \\
+NetID: \\
+Collaborators:
+}}
+\end{center}
+\vspace{5mm}
+
+{\bf (2)} {\em (10 points)}
+In the sport of American football, teams move a ball
+toward the opposing team's goal line in a sequence
+of plays called an offensive drive.
+Subject to some simplifications, the game
+has the following rules.
+\begin{enumerate}
+  \item An offensive drive starts $n$ yards away from
+  the other team's goal line. In American football, $n$
+  is often but not always equal to 80.
+  \item To retain possession of the ball, the team
+  must move forward at least $k$ yards in its first
+  $d$ plays, called ``downs''. In American football,
+  $k=10$ and $d=4$.
+  \item More generally, certain plays in an offensive
+  drive are called ``first downs''. The initial play in
+  the drive is a first down. A subsequent play is
+  called a first down if and only if the total
+  yardage accumulated since the preceding first down
+  is greater than or equal to $k$.
+  \item There are three ways that a drive could end.
+  \begin{itemize}
+    \item If the total yardage accumulated in the drive
+    is greater than or equal to $n$, the team scores a
+    touchdown.
+    \item If the team has completed $d$ plays
+    since the last first down, and the total
+    yardage accumulated in those $d$ plays
+    is less than $k$, the team loses possession.
+    \item Any play could result in a ``turnover''.
+    If this happens, the team loses possession
+    immediately.
+  \end{itemize}
+  \item On any given play of the drive, the team
+  needs to decide whether to try a passing play
+  or a running play. The probability of a turnover,
+  and the distribution of the random number of
+  yards gained in the event that the play is not
+  a turnover, depend on whether the team chooses
+  passing or running. We will assume that the
+  number of yards gained is always a non-negative
+  integer.\footnote{In the actual sport of football,
+  it's possible for a play to gain a negative number
+  of yards. We are deliberately ignoring this
+  possibility, for the sake of simplicity.}
+\end{enumerate}
+A {\em football strategy} is a strategy
+for choosing between a running or passing play
+in every possible situation that may arise
+during an offensive drive. A strategy is
+{\em optimal} if it maximizes the probability
+of scoring a touchdown.
+
+For an integer $y$ in the range $0 \le y \le n$,
+let $p_y$
+denote the probability of gaining $y$ yards
+on a passing play, and let $r_y$ denote the
+probability of gaining $y$ yards on a running
+play. Let $p_{n+1}$ and $r_{n+1}$ denote the
+probability of a turnover on a passing or
+running play, respectively.
+Assume these are non-negative
+rational numbers and that $\sum_{y=0}^{n+1} p_y
+= \sum_{y=0}^{n+1} r_y = 1$.
+Design an algorithm which is given the
+parameters $n,k,d$ and the probabilities
+$p_y, \, r_y$ for $y=0,1,\ldots,n+1$, and
+which determines whether the optimal football strategy
+chooses to run or to pass at the start of an
+offensive drive, $n$ yards away from the
+opponent's goal line. Your algorithm should work
+for {\em any} values of $n,k,d$, not only for
+$n=80, k=10, d=4$.
+
+
+\vskip \bigap
+
+%% Your solution goes here.
+
+\end{document}

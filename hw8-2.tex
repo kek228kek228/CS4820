@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+\usepackage{tikz}
+\usepackage{xcolor,colortbl}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is FULLPAGE.STY by H.Partl, Version 2 as of 15 Dec 1988.
+% Document Style Option to fill the paper just like Plain TeX.
+
+\typeout{Style Option FULLPAGE Version 2 as of 15 Dec 1988}
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+
+\textheight 8.9in
+
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+
+\textwidth 6.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textwidth}{6.8in}
+\setlength{\textheight}{9.5in}
+
+
+\def\ind{\hspace*{0.3in}}
+\def\gap{0.1in}
+\def\bigap{0.25in}
+\newcommand{\Xomit}[1]{}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+
+\begin{document}
+
+\setlength{\parindent}{0in}
+\addtolength{\parskip}{0.1cm}
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{{\bf
+CS 4820, Spring 2019 \hfill Homework 8, Problem 2}\\
+% TODO: fill in your own name, netID, and collaborators
+Name: \\
+NetID: \\
+}}
+\end{center}
+\vspace{5mm}
+\vskip \bigap
+{\bf (2)} {\em (10 points)} Consider the problem of NDPATH defined in the following way: An input instance is of the form $(G,S,T)$, where $G$ is an undirected graph on $n$ vertices,  $S=\{s_1,\ldots,s_k \}, T=\{t_1,\ldots,t_k\}$ are disjoint subsets of nodes of equal cardinality $k$ (for any integer $k \in \{1,\ldots,\lfloor n/2 \rfloor \})$. It is an `Yes' instance of NDPATH if there are node disjoint paths from $s_i$ to $t_i$, for all $i=1,\ldots,k$, and is a `NO' instance otherwise. Prove that NDPATH is NP-complete.  
+
+\emph{Hint: Reduce from 3SAT. For each clause and each variable, add a pair of $s_i$'s and $t_i$'s. For each clause, introduce a few intermediate nodes, corresponding to the variables appearing in the clause.}
+
+
+%% Your solution goes here.
+
+
+\end{document}

@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+\usepackage{tikz}
+\usepackage{xcolor,colortbl}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is FULLPAGE.STY by H.Partl, Version 2 as of 15 Dec 1988.
+% Document Style Option to fill the paper just like Plain TeX.
+
+\typeout{Style Option FULLPAGE Version 2 as of 15 Dec 1988}
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+
+\textheight 8.9in
+
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+
+\textwidth 6.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textwidth}{6.8in}
+\setlength{\textheight}{9.5in}
+
+
+\def\ind{\hspace*{0.3in}}
+\def\gap{0.1in}
+\def\bigap{0.25in}
+\newcommand{\Xomit}[1]{}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+
+\begin{document}
+
+\setlength{\parindent}{0in}
+\addtolength{\parskip}{0.1cm}
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{{\bf
+CS 4820, Spring 2019 \hfill Homework 5, Problem 2}\\
+% TODO: fill in your own name, netID, and collaborators
+Name: \\
+NetID: \\
+}}
+\end{center}
+\vspace{5mm}
+\vskip \bigap
+{\bf (2)} {\em (15 points)} Given as input a list of $n$ points $L=\{(a_1,b_1),\ldots, (a_n,b_n)\}$ on the real plane, your task is to compute the largest rectangle (in terms of area) that can be formed by selecting two points from $L$, one representing the bottom-left vertex of the rectangle and the other representing the top-right vertex. For simplicity, assume that all the $a_i$'s and $b_i$'s are distinct real numbers.
+\vskip \gap
+
+{\bf (2a)} {\em (3 points)} Define two lists of points $BL$ and $TR$ in the following way:  $$BL = \{ (a_i,b_i) \in L: \text{for any }j \neq i,\text{ either } a_i<a_j\text{ or }b_i < b_j\}$$ and $$TR = \{ (a_i,b_i) \in L: \text{for any }j \neq i,\text{ either } a_i>a_j\text{ or }b_i > b_j\}.$$  Prove that there exists a  rectangle with largest area (using points from $L$) that has its bottom-left vertex in $BL$ and top-right vertex in $TR$. Provide an $O(n \log n)$ time algorithm to compute $BL$ and $TR$. You must output each of the two lists $BL$ and $TR$ by sorting them according to the $x$-coordinates of the points (in increasing order). \textbf{You don't have to provide proof of correctness of your algorithms. You do have to analyze run-time of the algorithms you provide.}
+
+\vskip \gap
+{\bf (2b)} {\em (2 points)} Let $(a_i,b_i)$ and $(a_j,b_j)$ be points in $BL$ such that $a_i <a_j$. Further, let $(a_k,b_k)$ and $(a_{\ell}, b_{\ell})$ be points in $TR$ such that $a_k < a_{\ell}$. Define $\Delta_{e,f}$ to be the area of the rectangle using $(a_e,b_e)$ as the bottom-left vertex and $(a_f,b_f)$ as the top-right vertex, where $e\in \{i,j\}$ and $f \in \{k,l\}$. Prove that $\Delta_{i,k} + \Delta_{j,\ell} > \Delta_{i,\ell} + \Delta_{j,k}$.
+\vskip \gap
+{\bf (2c)} {\em (10 points)} 
+Design an algorithm  that runs in time $O(n \log n)$ to compute the largest rectangle (in terms of area) that can be formed by selecting the bottom-left vertex from $BL$ and the top-right vertex from $TR$. The output of the algorithm should be the area of the largest rectangle.
+\vskip \bigap
+
+%% Your solution goes here.
+
+
+\end{document}

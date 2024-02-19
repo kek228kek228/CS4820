@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+\usepackage{tikz}
+\usepackage{xcolor,colortbl}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is FULLPAGE.STY by H.Partl, Version 2 as of 15 Dec 1988.
+% Document Style Option to fill the paper just like Plain TeX.
+
+\typeout{Style Option FULLPAGE Version 2 as of 15 Dec 1988}
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+
+\textheight 8.9in
+
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+
+\textwidth 6.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textwidth}{6.8in}
+\setlength{\textheight}{9.5in}
+
+
+\def\ind{\hspace*{0.3in}}
+\def\gap{0.1in}
+\def\bigap{0.25in}
+\newcommand{\Xomit}[1]{}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+
+
+\begin{document}
+
+\setlength{\parindent}{0in}
+\addtolength{\parskip}{0.1cm}
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{{\bf
+CS 4820, Spring 2019 \hfill Homework 6, Problem 2}\\
+% TODO: fill in your own name, netID, and collaborators
+Name: \\
+NetID: \\
+}}
+\end{center}
+\vspace{5mm}
+\vskip \bigap
+{\bf (2)} {\em (15 points)} $m$ tourists are wandering in the streets of Manhattan, and they are hungry. Fortunately, there are $m$ hotels as well, and you have been assigned the task to match tourists with hotels. We make the following assumptions:
+\begin{itemize}
+\item Model Manhattan as the $n \times n$ grid $[0,n-1] \times [0,n-1]$. 
+\item Tourists can walk either horizontally or vertically on this grid. The time taken by a tourist to walk from $(x_1,y_1)$ to $(x_2,y_2)$ is given by $|x_1-x_2| + |y_1-y_2|$.
+\item Tourists can walk in parallel on a segment. (This models the fact that roads are wide enough for multiple people to walk simultaneously.)
+\item Each hotel can accommodate at most one tourist.
+\item Each tourist has a list of at most $r$ hotels (which is a subset of the $m$ available hotels) which they would be happy to go to.
+\end{itemize}
+You are given as input the initial locations of the $m$ tourists, their hotel preferences, and the locations of the $m$ hotels. Assume that time $T=0$ initially. Define the cost of an allocation to be the minimum time $T_0$ such that all tourists reach their respective hotels (starting from their initial locations) at time $T=T_0$.  Recall that we are assuming that the tourists  walk simultaneously to their hotels. 
+
+Design an algorithm to find the minimum cost allocation that makes all the tourists happy (the algorithm should output `No' if  no such allocations exist). The running time of your algorithm should be $O(m^2 r \log n)$.
+
+Example: Suppose there are $2$ tourists $a_1,a_2$ located at $(0,0)$ and $(1,0)$ respectively. Further suppose there are $2$ hotels $h_1,h_2$ located at $(0,1)$ and $(1,1)$ respectively.  Let the lists of both $a_1$ and $a_2$ be $\{h_1,h_2\}$ and $r=2$. Then, an assignment of $a_1$ to $t_1$ and $a_2$ to $t_2$ makes both of them happy. Further, under this allocation $t_1$ and $t_2$   reach their respective hotels at time $T=1$. In the other assignment, which is  $a_1$ to $h_2$ and $a_2$ to $h_1$ also makes both of them happy. However, they both reach their hotels at time $T=2$, which is worse than the previous allocation.  Thus, in this case your output should be $(t_1,h_1)$ and $(t_2,h_2)$.
+
+
+
+\vskip \bigap
+
+%% Your solution goes here.
+
+
+\end{document}

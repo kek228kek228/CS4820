@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+%\usepackage{fullpage}
+\usepackage{epic}
+\usepackage{eepic}
+\usepackage{paralist}
+\usepackage{graphicx}
+\usepackage{algorithm,algorithmic}
+\usepackage{tikz}
+\usepackage{xcolor,colortbl}
+\usepackage{wrapfig}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is FULLPAGE.STY by H.Partl, Version 2 as of 15 Dec 1988.
+% Document Style Option to fill the paper just like Plain TeX.
+
+\typeout{Style Option FULLPAGE Version 2 as of 15 Dec 1988}
+
+\topmargin 0pt
+\advance \topmargin by -\headheight
+\advance \topmargin by -\headsep
+
+\textheight 8.9in
+
+\oddsidemargin 0pt
+\evensidemargin \oddsidemargin
+\marginparwidth 0.5in
+
+\textwidth 6.5in
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-0.8in}
+\setlength{\textwidth}{6.8in}
+\setlength{\textheight}{9.5in}
+
+
+\def\ind{\hspace*{0.3in}}
+\def\gap{0.1in}
+\def\bigap{0.25in}
+\newcommand{\Xomit}[1]{}
+
+
+\begin{document}
+
+\setlength{\parindent}{0in}
+\addtolength{\parskip}{0.1cm}
+\setlength{\fboxrule}{.5mm}\setlength{\fboxsep}{1.2mm}
+\newlength{\boxlength}\setlength{\boxlength}{\textwidth}
+\addtolength{\boxlength}{-4mm}
+\begin{center}\framebox{\parbox{\boxlength}{{\bf
+CS 4820, Spring 2019 \hfill Homework 3, Problem 1}\\
+% TODO: fill in your own name, netID, and collaborators
+Name: \\
+NetID: \\
+Collaborators:
+}}
+\end{center}
+\vspace{5mm}
+\vskip \bigap
+{\bf (1)} {\em (10 points)}
+In American politics, {\em gerrymandering} refers to the process of
+subdividing a region into electoral districts to maximize a particular
+political party's advantage. This problem explores a simplified model
+of gerrymandering in which the region is modeled as one-dimensional.
+Assume that there are $n > 0$ {\em precincts} represented by the
+vertices $v_1,v_2,\ldots,v_n$ of an undirected path.
+A {\em district} is defined to be a contiguous interval of precincts;
+in other words a district is specified by its endpoints $i \le j$,
+and it consists of precincts $v_i,v_{i+1},v_{i+2},\ldots,v_j$.
+We will refer to such a district as $[i,j]$.
+
+Assume there are two parties A and B competing in the election,
+and for every  $ 1 \le i \le  j \le n$, $P[i,j]$ denotes the
+probability that A wins in the district $[i,j]$.
+The probability matrix $P$ is given as part of the input.
+Assume that the law requires the precincts to be partitioned
+into exactly $k$ disjoint districts, each containing at least
+$s_{\min}$ and at most $s_{\max}$ nodes. You may also assume
+the parameters $n,k,s_{\min},s_{\max}$ are chosen such that
+there is at least one way to partition the precincts into
+$k$ districts meeting the specified size constraints.
+Your task is to find an efficient algorithm to gerrymander the
+precincts into $k$ districts satisfying the size constraints,
+so as to maximize the expected number of districts that A wins.
+
+\vskip \bigap
+
+
+%% Your solution goes here.
+
+\end{document}
